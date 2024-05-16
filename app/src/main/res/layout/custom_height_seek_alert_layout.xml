@@ -1,0 +1,128 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Please select Height"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/tv_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="From Age and End Age"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"
+            android:visibility="gone" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_other_description"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="12dp"
+            android:visibility="gone">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_other_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_progress_feet_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Feet ::"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/tv_progress_feet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                android:visibility="visible" />
+
+        </LinearLayout>
+
+        <SeekBar
+            android:id="@+id/sk_bar_feet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:max="8" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_progress_inch_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="10dp"
+                android:text="Inch  ::"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/tv_progress_inch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                android:visibility="visible" />
+        </LinearLayout>
+
+        <SeekBar
+            android:id="@+id/sk_bar_inch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:max="11" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_submit"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="30dp"
+            android:text="Submit"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </LinearLayout>
+</RelativeLayout>

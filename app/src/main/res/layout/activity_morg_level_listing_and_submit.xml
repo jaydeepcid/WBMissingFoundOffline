@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MorgLevelListing"
+        android:orientation="vertical"
+        >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+
+            >
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <LinearLayout
+            android:id="@+id/linear_ly_no_result_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:orientation="vertical"
+            android:gravity="center"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/two_hundred"
+                android:src="@drawable/udca_logo"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="No Body Found in this area."
+                android:textSize="@dimen/tweenty"
+                android:textStyle="bold"
+                android:paddingLeft="@dimen/tweenty"
+                android:paddingRight="@dimen/tweenty"/>
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+

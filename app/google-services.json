@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "912789447578",
+    "project_id": "wb-missing-found",
+    "storage_bucket": "wb-missing-found.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:912789447578:android:40bf4b39fd9430dcf51023",
+        "android_client_info": {
+          "package_name": "com.example.wbmissingfound"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGQl3YbD9h15AOouIKOV9br_YauU87hmc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

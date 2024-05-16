@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#9E7676</color>
+    <color name="purple_500">#815B5B</color>
+    <color name="purple_700">#594545</color>
+    <color name="teal_200">#B3677F</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="textColorPrimary">#FF000000</color>
+    <color name="colorPrimary">#1877F2</color>
+    <color name="colorPrimaryDark">#239C80</color>
+    <color name="colorAccent">#DAF8EF</color>
+    <color name="background_card">#EFD3DD</color>
+    <color name="inner_background_card">#F4EBEE</color>
+    <color name="chk_background">#C1A1AC</color>
+    <color name="sinner_layout">#9E9E9E</color>
+    <color name="green">#0B7A27</color>
+    <color name="red">#A50C40</color>
+    <color name="permission_heading">#FFCA05</color>
+    <color name="permission_description">#373737</color>
+    <color name="per_sub_des">#A7A7A7</color>
+    <color name="text_blue">#1877F2</color>
+    <color name="text_blue_light">#6CB4EE</color>
+    <color name="new_card_blue">#412196F3</color>
+    <color name="violet_800">#673AB7</color>
+    <color name="violet_200">#7E57C2</color>
+    <color name="violet_50">#EDE7F6</color>
+
+
+    <color name="card_bgcolor1">#d9793d</color>
+    <color name="card_bgcolor2">#727cc3</color>
+    <color name="card_bgcolor3">#53a18b</color>
+    <color name="card_bgcolor4">#d66c6e</color>
+
+
+    <color name="alt_text1">#ffc1b9</color>
+    <color name="alt_text2">#becbf5</color>
+    <color name="alt_text3">#aae5d3</color>
+    <color name="alt_text4">#ffb9b5</color>
+    <color name="heading_txt">#000000</color>
+
+
+
+
+</resources>

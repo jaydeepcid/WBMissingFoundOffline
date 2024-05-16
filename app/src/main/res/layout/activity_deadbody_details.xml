@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".DeadbodyDetailsActivity">
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/deadbody_details"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/mcv_one"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/activity_horizontal_margin"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="15dp"
+                    app:cardPreventCornerOverlap="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_disricts_txt"
+                                style="@style/DeaybodyDetailsTextViewHead"
+                                android:text="@string/districts_commissionerate" />
+
+                            <TextView
+                                android:id="@+id/tv_disricts"
+                                style="@style/DeaybodyDetailsTextView"
+                                android:text="@string/districts_commissionerate" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_ps_txt"
+                                style="@style/DeaybodyDetailsTextViewHead"
+                                android:text="@string/police_station" />
+
+                            <TextView
+                                android:id="@+id/tv_ps"
+                                style="@style/DeaybodyDetailsTextView"
+                                android:text="@string/police_station" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="5dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_date_txt"
+                                style="@style/DeaybodyDetailsTextViewHead"
+                                android:text="@string/date" />
+
+                            <TextView
+                                android:id="@+id/tv_date"
+                                style="@style/DeaybodyDetailsTextView"
+                                android:text="@string/date" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/mcv_two"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/activity_horizontal_margin"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="15dp"
+                    app:cardPreventCornerOverlap="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/DeaybodyDetailsTextViewHead"
+                            android:layout_gravity="center"
+                            android:text="@string/case_details_head" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_udcaseno_txt"
+                                style="@style/DeaybodyDetailsTextViewHead"
+                                android:text="@string/ud_casenumber" />
+
+                            <TextView
+                                android:id="@+id/tv_udcaseno"
+                                style="@style/DeaybodyDetailsTextView"
+                                android:text="@string/ud_casenumber" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_fir_txt"
+                                style="@style/DeaybodyDetailsTextViewHead"
+                                android:text="@string/fir_number" />
+
+                            <TextView
+                                android:id="@+id/tv_fir"
+                                style="@style/DeaybodyDetailsTextView"
+                                android:text="@string/fir_number" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="5dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_sections_txt"
+                                style="@style/DeaybodyDetailsTextViewHead"
+                                android:text="@string/sections" />
+
+                            <TextView
+                                android:id="@+id/tv_sections"
+                                style="@style/DeaybodyDetailsTextView"
+                                android:text="@string/sections" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="5dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_gd_txt"
+                                style="@style/DeaybodyDetailsTextViewHead"
+                                android:text="@string/gd_refer" />
+
+                            <TextView
+                                android:id="@+id/tv_gd"
+                                style="@style/DeaybodyDetailsTextView"
+                                android:text="@string/gd_refer" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="5dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_io_txt"
+                                style="@style/DeaybodyDetailsTextViewHead"
+                                android:text="@string/inquest_officer" />
+
+                            <TextView
+                                android:id="@+id/tv_io"
+                                style="@style/DeaybodyDetailsTextView"
+                                android:text="@string/inquest_officer" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="5dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_place_found_txt"
+                                style="@style/DeaybodyDetailsTextViewHead"
+                                android:text="@string/place_found" />
+
+                            <TextView
+                                android:id="@+id/tv_place_found"
+                                style="@style/DeaybodyDetailsTextView"
+                                android:text="@string/place_found" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="5dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_informantname_txt"
+                                style="@style/DeaybodyDetailsTextViewHead"
+                                android:text="@string/informant_name_contact" />
+
+                            <TextView
+                                android:id="@+id/tv_informantname"
+                                style="@style/DeaybodyDetailsTextView"
+                                android:text="@string/informant_name_contact" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/mcv_three"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/activity_horizontal_margin"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="15dp"
+                    app:cardPreventCornerOverlap="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/DeaybodyDetailsTextViewHead"
+                            android:layout_gravity="center"
+                            android:text="@string/deadbody_details_head" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_dbodyage_txt"
+                                style="@style/DeaybodyDetailsTextViewHead"
+                                android:text="@string/dbody_age" />
+
+                            <TextView
+                                android:id="@+id/tv_dbodyage"
+                                style="@style/DeaybodyDetailsTextView"
+                                android:text="@string/dbody_age" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_dbodygender_txt"
+                                style="@style/DeaybodyDetailsTextViewHead"
+                                android:text="@string/dbody_gender" />
+
+                            <TextView
+                                android:id="@+id/tv_dbodygender"
+                                style="@style/DeaybodyDetailsTextView"
+                                android:text="@string/dbody_gender" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="5dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_dbodyheight_txt"
+                                style="@style/DeaybodyDetailsTextViewHead"
+                                android:text="@string/dbodyheight" />
+
+                            <TextView
+                                android:id="@+id/tv_dbodyheight"
+                                style="@style/DeaybodyDetailsTextView"
+                                android:text="@string/dbodyheight" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="5dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_dbodyimark_txt"
+                                style="@style/DeaybodyDetailsTextViewHead"
+                                android:text="@string/dbody_imark" />
+
+                            <TextView
+                                android:id="@+id/tv_dbodyimark"
+                                style="@style/DeaybodyDetailsTextView"
+                                android:text="@string/dbody_imark" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="5dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_dbody_wapparels_txt"
+                                style="@style/DeaybodyDetailsTextViewHead"
+                                android:text="@string/dbody_wapparels" />
+
+                            <TextView
+                                android:id="@+id/tv_dbody_wapparels"
+                                style="@style/DeaybodyDetailsTextView"
+                                android:text="@string/dbody_wapparels" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="5dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_dbodypitems_txt"
+                                style="@style/DeaybodyDetailsTextViewHead"
+                                android:text="@string/dbody_pitems" />
+
+                            <TextView
+                                android:id="@+id/tv_dbodypitems"
+                                style="@style/DeaybodyDetailsTextView"
+                                android:text="@string/dbody_pitems" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="5dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_dbodyvimarks_txt"
+                                style="@style/DeaybodyDetailsTextViewHead"
+                                android:text="@string/dbody_vimarks" />
+
+                            <TextView
+                                android:id="@+id/tv_dbodyvimarks"
+                                style="@style/DeaybodyDetailsTextView"
+                                android:text="@string/dbody_vimarks" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="5dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_dbodygcondition_txt"
+                                style="@style/DeaybodyDetailsTextViewHead"
+                                android:text="@string/dbody_gencondition" />
+
+                            <TextView
+                                android:id="@+id/tv_dbodygcondition"
+                                style="@style/DeaybodyDetailsTextView"
+                                android:text="@string/dbody_gencondition" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/mcv_four"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/activity_horizontal_margin"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="15dp"
+                    app:cardPreventCornerOverlap="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_photo_txt"
+                                style="@style/DeaybodyDetailsTextViewHead"
+                                android:layout_gravity="center"
+                                android:text="@string/photographs" />
+
+                            <ImageView
+                                android:id="@+id/iv_photo"
+                                style="@style/arrowHeading"
+                                app:tint="@color/white" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_fprint_txt"
+                                style="@style/DeaybodyDetailsTextViewHead"
+                                android:layout_gravity="center"
+                                android:text="Finger Prints" />
+
+                            <ImageView
+                                android:id="@+id/iv_fprint"
+                                style="@style/arrowHeading"
+                                app:tint="@color/white" />
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/mcv_five"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/activity_horizontal_margin"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="15dp"
+                    app:cardPreventCornerOverlap="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/DeaybodyDetailsTextViewHead"
+                            android:layout_gravity="center"
+                            android:text="@string/dbody_more_details" />
+
+                        <com.google.android.material.chip.ChipGroup
+                            android:id="@+id/cg_moredetails"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+</layout>

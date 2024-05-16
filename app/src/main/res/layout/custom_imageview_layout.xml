@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@+id/fl_root"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/img_photo"
+        android:layout_width="150dp"
+        android:layout_height="200dp"
+        android:layout_margin="15dp"/>
+
+    <ImageButton
+        android:id="@+id/btn_close"
+        android:visibility="visible"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_gravity="end"
+        android:background="#00000000"
+        android:scaleType="centerCrop"
+        android:src="@drawable/delete_cross"/>
+
+</FrameLayout>

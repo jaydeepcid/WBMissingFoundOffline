@@ -1,0 +1,1541 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    tools:ignore="HardcodedText">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btn_submit">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    style="@style/relativeHeading"
+                    android:visibility="gone">
+
+                    <TextView
+                        style="@style/textViewHeading"
+                        android:layout_centerInParent="true"
+                        android:text="@string/case_details" />
+
+                    <ImageView
+                        android:id="@+id/iv_case_deatls_arrow"
+                        style="@style/arrowHeading"
+                        app:tint="@color/white" />
+                </RelativeLayout>
+
+                <CheckBox
+                    android:id="@+id/ckb_case_details"
+                    style="@style/checkBoxText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/chk_background"
+                    android:text="@string/case_details"
+                    android:visibility="visible" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/mcv_case_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/activity_horizontal_margin"
+                    android:visibility="visible"
+                    app:cardCornerRadius="10dp"
+                    app:cardPreventCornerOverlap="true">
+
+                    <LinearLayout
+                        android:id="@+id/ll_case_details"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                            android:text="Police District:"
+
+                            />
+
+                        <LinearLayout
+                            android:id="@+id/ll_spinner_occurrence_dist"
+                            style="@style/LinearLayoutSpinner"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="@dimen/activity_horizontal_margin"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="12dp">
+
+                            <Spinner
+                                android:id="@+id/spinner_occurrence_dist"
+                                style="@style/Spinner" />
+                        </LinearLayout>
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                            android:text="Police Station:" />
+
+                        <LinearLayout
+                            android:id="@+id/ll_spinner_occurrence_ps"
+                            style="@style/LinearLayoutSpinner"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="12dp">
+
+                            <Spinner
+                                android:id="@+id/spinner_occurrence_ps"
+                                style="@style/Spinner" />
+                        </LinearLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_case_number"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="12dp"
+                            android:hint="@string/ud_case_number">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/tiet_case_number"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <TextView
+                            android:id="@+id/tv_case_date_txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                            android:gravity="bottom"
+                            android:hint="Case Date" />
+
+                        <LinearLayout
+                            android:id="@+id/ll_tv_case_date"
+                            style="@style/LinearLayoutSpinner"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="12dp">
+
+                            <TextView
+                                android:id="@+id/tv_case_date"
+                                style="@style/Spinner"
+                                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                android:gravity="center_vertical"
+                                android:hint="Select Case Date" />
+                        </LinearLayout>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_fir_no"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="12dp"
+                            android:hint="@string/tv5">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/tiet_fir_no"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_fir_section"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="12dp"
+                            android:hint="@string/fir_sec">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/tiet_fir_section"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <TextView
+                            android:id="@+id/tv_fir_date_txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                            android:gravity="bottom"
+                            android:hint="FIR Date" />
+
+                        <LinearLayout
+                            android:id="@+id/ll_tv_fir_date"
+                            style="@style/LinearLayoutSpinner"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="12dp">
+
+                            <TextView
+                                android:id="@+id/tv_fir_date"
+                                style="@style/Spinner"
+                                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                android:gravity="center_vertical"
+                                android:hint="Select FIR Date" />
+                        </LinearLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_gd_reference"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="12dp"
+                            android:hint="@string/gd_reference">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/tiet_gd_reference"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                        <TextView
+                            android:id="@+id/tv_gde_date_txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                            android:gravity="bottom"
+                            android:hint="GDE Date" />
+
+                        <LinearLayout
+                            android:id="@+id/ll_tv_gde_date"
+                            style="@style/LinearLayoutSpinner"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="12dp">
+
+                            <TextView
+                                android:id="@+id/tv_gde_date"
+                                style="@style/Spinner"
+                                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                android:gravity="center_vertical"
+                                android:hint="Select GDE Date" />
+                        </LinearLayout>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/mcv_place_where_d_body_found"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginBottom="10dp"
+                            android:elevation="20dp">
+
+
+                            <LinearLayout
+                                android:id="@+id/ll_place_where_dead_body_found"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_place_where_dead_body_found_txt"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                    android:layout_marginTop="@dimen/activity_horizontal_margin"
+                                    android:gravity="bottom"
+                                    android:hint="@string/place_where_dead_body_found" />
+
+
+                                <RelativeLayout
+                                    android:id="@+id/rl_lat_long_btn"
+                                    style="@style/Spinner"
+                                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                    android:layout_marginRight="@dimen/activity_horizontal_margin">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerVertical="true"
+                                        android:text="Set current Lat Long" />
+
+                                    <Switch
+                                        android:id="@+id/location_switch"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentRight="true"
+                                        android:layout_centerVertical="true"
+                                        android:checked="false" />
+                                </RelativeLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                                    android:orientation="horizontal">
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        android:id="@+id/til_latitude"
+                                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1">
+
+                                        <com.google.android.material.textfield.TextInputEditText
+                                            android:id="@+id/tiet_latitude"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:hint="@string/latitude"
+                                            android:inputType="numberDecimal" />
+                                    </com.google.android.material.textfield.TextInputLayout>
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        android:id="@+id/til_longitude"
+                                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_weight="1">
+
+                                        <com.google.android.material.textfield.TextInputEditText
+                                            android:id="@+id/tiet_longitude"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:hint="@string/longitude"
+                                            android:inputType="numberDecimal" />
+                                    </com.google.android.material.textfield.TextInputLayout>
+
+                                </LinearLayout>
+
+
+                                <TextView
+                                    android:id="@+id/tv_where_dead_body_txt"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                    android:layout_marginTop="@dimen/activity_horizontal_margin"
+                                    android:gravity="bottom"
+                                    android:hint="If you wnat to add more details about a place then please add here" />
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/til_place_where_dead_body_found"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginBottom="12dp">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/tiet_place_where_dead_body_found"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+
+                            </LinearLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_inquest_Officer"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="12dp"
+                            android:hint="@string/inquest_Officer">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/tiet_inquest_Officer"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_ud_case_officer_name"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="12dp"
+                            android:hint="@string/ud_case_officer_name">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/tiet_ud_case_officer_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_ud_case_officer_contact_no"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="12dp"
+                            android:hint="@string/ud_case_officer_contact_no">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/tiet_ud_case_officer_contact_no"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="phone" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+                <!-- dead_body_details-->
+
+
+                <RelativeLayout
+                    style="@style/relativeHeading"
+                    android:visibility="gone">
+
+                    <TextView
+                        style="@style/textViewHeading"
+                        android:layout_centerInParent="true"
+                        android:text="@string/dead_body_details" />
+
+                    <ImageView
+                        android:id="@+id/iv_dead_body_details_arrow"
+                        style="@style/arrowHeading"
+                        app:tint="@color/white" />
+                </RelativeLayout>
+
+                <CheckBox
+                    android:id="@+id/ckb_dead_body_details"
+                    style="@style/checkBoxText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/chk_background"
+                    android:text="@string/dead_body_details"
+                    app:tint="@color/white" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/mcv_dead_body_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/activity_horizontal_margin"
+                    android:visibility="visible"
+                    app:cardCornerRadius="10dp"
+                    app:cardPreventCornerOverlap="true">
+
+                    <LinearLayout
+                        android:id="@+id/ll_ckb_dead_body_details"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_age"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="12dp"
+                            android:hint="@string/age"
+                            android:visibility="gone">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/tiet_age"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                        <TextView
+                            android:id="@+id/tv_age_txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                            android:gravity="bottom"
+                            android:hint="Age Range" />
+
+                        <LinearLayout
+                            android:id="@+id/ll_form_and_to_date"
+                            style="@style/LinearLayoutSpinner"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="12dp">
+
+                            <TextView
+                                android:id="@+id/tv_form_and_to_date"
+                                style="@style/Spinner"
+                                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                android:gravity="center_vertical"
+                                android:hint="Select Form and To date" />
+                        </LinearLayout>
+
+
+                        <TextView
+                            android:id="@+id/tv_height_txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                            android:gravity="bottom"
+                            android:hint="Height Range" />
+
+                        <LinearLayout
+                            android:id="@+id/ll_height"
+                            style="@style/LinearLayoutSpinner"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="12dp">
+
+                            <TextView
+                                android:id="@+id/tv_height"
+                                style="@style/Spinner"
+                                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                android:gravity="center_vertical"
+                                android:hint="Select height" />
+                        </LinearLayout>
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="@dimen/activity_horizontal_margin"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="12dp"
+                            android:text="Gender"
+                            android:textStyle="bold" />
+
+                        <RadioGroup
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="12dp"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/rb_male"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Male" />
+
+                            <RadioButton
+                                android:id="@+id/rb_female"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Female" />
+
+                            <RadioButton
+                                android:id="@+id/rb_other"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Other" />
+
+                        </RadioGroup>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_details_of_injury_mark"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="12dp"
+                            android:hint="@string/details_of_injury_mark">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/tiet_details_of_injury_mark"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="12dp"
+                            android:text="@string/general_condition"
+                            android:textStyle="bold" />
+
+                        <RadioGroup
+                            android:id="@+id/gb_general_condition"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="12dp"
+                            android:orientation="vertical">
+
+                            <RadioButton
+                                android:id="@+id/rb_complete_body"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Complete body" />
+
+                            <RadioButton
+                                android:id="@+id/rb_incomplete_body"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Incomplete body" />
+
+                            <RadioButton
+                                android:id="@+id/rb_decomposed"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Decomposed" />
+
+                            <RadioButton
+                                android:id="@+id/rb_partially_skeletonized"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Partially skeletonized" />
+
+                            <RadioButton
+                                android:id="@+id/rb_fully_skeletonized"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="fully skeletonized" />
+
+                            <RadioButton
+                                android:id="@+id/rb_burnt"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="burnt" />
+
+                        </RadioGroup>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/mcv_identical_marks"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginBottom="10dp"
+                            android:backgroundTint="@color/inner_background_card"
+                            android:elevation="20dp">
+
+
+                            <LinearLayout
+                                android:id="@+id/ll_identical_marks"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_identical_marks_txt"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginBottom="12dp"
+                                    android:text="@string/any_visible_identification_marks"
+                                    android:textStyle="bold" />
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/til_identical_marks"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginBottom="12dp"
+                                    android:hint="@string/any_visible_identification_marks">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/tiet_identical_marks"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <Button
+                                    android:id="@+id/btn_identical_marks"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginBottom="12dp"
+                                    android:text="Add Picture" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <HorizontalScrollView
+                                        android:id="@+id/hsv_identical_marks"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="10dp">
+
+                                        <LinearLayout
+                                            android:id="@+id/ll_identical_marks_pic"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal" />
+                                    </HorizontalScrollView>
+                                </LinearLayout>
+                            </LinearLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/mcv_personal_item"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginBottom="10dp"
+                            android:backgroundTint="@color/inner_background_card"
+                            android:elevation="20dp">
+
+                            <LinearLayout
+                                android:id="@+id/ll_personal_item"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_personal_items_of_the_body_txt"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginBottom="12dp"
+                                    android:text="@string/personal_items_of_the_body"
+                                    android:textStyle="bold" />
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/til_personal_items_of_the_body"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginBottom="12dp"
+                                    android:hint="@string/description">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/tiet_personal_items_of_the_body"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <Button
+                                    android:id="@+id/btn_personal_items_of_the_body"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginBottom="12dp"
+                                    android:text="Add Picture" />
+
+                                <HorizontalScrollView
+                                    android:id="@+id/hsv_personal_items_of_the_body"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="10dp">
+
+                                    <LinearLayout
+                                        android:id="@+id/ll_personal_items_of_the_body"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal" />
+                                </HorizontalScrollView>
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/mcv_top_wearing_apparels_details"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginBottom="10dp"
+                            android:backgroundTint="@color/inner_background_card"
+                            android:elevation="20dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:id="@+id/ll_top_wearing_apparels"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/tv_top_wearing_apparels_txt"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginEnd="10dp"
+                                        android:layout_marginBottom="12dp"
+                                        android:text="@string/top_wearing_apparels"
+                                        android:textStyle="bold" />
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        android:id="@+id/til_top_wearing_apparels"
+                                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginEnd="10dp"
+                                        android:layout_marginBottom="12dp"
+                                        android:baselineAligned="false"
+                                        android:hint="@string/top_wearing_apparels">
+
+                                        <com.google.android.material.textfield.TextInputEditText
+                                            android:id="@+id/tiet_top_wearing_apparels"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content" />
+
+                                    </com.google.android.material.textfield.TextInputLayout>
+
+                                    <Button
+                                        android:id="@+id/btn_top_wearing_apparels"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginEnd="10dp"
+                                        android:layout_marginBottom="12dp"
+                                        android:text="Add Picture" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <HorizontalScrollView
+                                            android:id="@+id/hsv_top_wearing_apparels"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginBottom="10dp">
+
+                                            <LinearLayout
+                                                android:id="@+id/ll_top_wearing_apparels_pic"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:orientation="horizontal" />
+                                        </HorizontalScrollView>
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/ll_bottom_wearing_apparels"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/tv_bottom_wearing_apparels_txt"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginEnd="10dp"
+                                        android:layout_marginBottom="12dp"
+                                        android:text="@string/bottom_wearing_apparels"
+                                        android:textStyle="bold" />
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        android:id="@+id/til_bottom_wearing_apparels"
+                                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginEnd="10dp"
+                                        android:layout_marginBottom="12dp"
+                                        android:baselineAligned="false"
+                                        android:hint="@string/bottom_wearing_apparels">
+
+                                        <com.google.android.material.textfield.TextInputEditText
+                                            android:id="@+id/tiet_bottom_wearing_apparels"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content" />
+
+                                    </com.google.android.material.textfield.TextInputLayout>
+
+                                    <Button
+                                        android:id="@+id/btn_bottom_wearing_apparels"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginEnd="10dp"
+                                        android:layout_marginBottom="12dp"
+                                        android:text="Add Picture" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <HorizontalScrollView
+                                            android:id="@+id/hsv_bottom_wearing_apparels"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginBottom="10dp">
+
+                                            <LinearLayout
+                                                android:id="@+id/ll_bottom_wearing_apparels_pic"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:orientation="horizontal" />
+                                        </HorizontalScrollView>
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/ll_undergarment_apparels"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/tv_undergarment_apparels_txt"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginEnd="10dp"
+                                        android:layout_marginBottom="12dp"
+                                        android:text="@string/undergarments_apparels"
+                                        android:textStyle="bold" />
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        android:id="@+id/til_undergarment_apparels"
+                                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginEnd="10dp"
+                                        android:layout_marginBottom="12dp"
+                                        android:baselineAligned="false"
+                                        android:hint="@string/undergarments_apparels">
+
+                                        <com.google.android.material.textfield.TextInputEditText
+                                            android:id="@+id/tiet_undergarment_apparels"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content" />
+
+                                    </com.google.android.material.textfield.TextInputLayout>
+
+                                    <Button
+                                        android:id="@+id/btn_undergarment_apparels"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginEnd="10dp"
+                                        android:layout_marginBottom="12dp"
+                                        android:text="Add Picture" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <HorizontalScrollView
+                                            android:id="@+id/hsv_undergarment_apparels"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginBottom="10dp">
+
+                                            <LinearLayout
+                                                android:id="@+id/ll_undergarment_apparels_pic"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:orientation="horizontal" />
+                                        </HorizontalScrollView>
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/ll_footware"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/tv_footware_txt"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginEnd="10dp"
+                                        android:layout_marginBottom="12dp"
+                                        android:text="@string/footware_apparels"
+                                        android:textStyle="bold" />
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        android:id="@+id/til_footware"
+                                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginEnd="10dp"
+                                        android:layout_marginBottom="12dp"
+                                        android:baselineAligned="false"
+                                        android:hint="@string/footware_apparels">
+
+                                        <com.google.android.material.textfield.TextInputEditText
+                                            android:id="@+id/tiet_footware"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content" />
+
+                                    </com.google.android.material.textfield.TextInputLayout>
+
+                                    <Button
+                                        android:id="@+id/btn_footware"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginEnd="10dp"
+                                        android:layout_marginBottom="12dp"
+                                        android:text="Add Picture" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <HorizontalScrollView
+                                            android:id="@+id/hsv_footware"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginBottom="10dp">
+
+                                            <LinearLayout
+                                                android:id="@+id/ll_footware_pic"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:orientation="horizontal" />
+                                        </HorizontalScrollView>
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+
+                <CheckBox
+                    android:id="@+id/ckb_photograph_fingerprint"
+                    style="@style/checkBoxText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/chk_background"
+                    android:text="@string/photographs_and_fingerprint" />
+
+                <LinearLayout
+                    android:id="@+id/ll_photograph_fingerprint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:elevation="20dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginBottom="12dp"
+                                android:text="@string/uploading_photograph_from_different_angles"
+                                android:textStyle="bold" />
+
+
+                            <Button
+                                android:id="@+id/btn_pic_diif_angel"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginBottom="12dp"
+                                android:text="Add Picture" />
+
+                            <HorizontalScrollView
+                                android:id="@+id/hsv_pic_diif_angel"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp">
+
+                                <LinearLayout
+                                    android:id="@+id/ll_pic_diif_angel"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal" />
+                            </HorizontalScrollView>
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+
+                </LinearLayout>
+
+                <CheckBox
+                    android:id="@+id/ckb_fingerprint"
+                    style="@style/checkBoxText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/chk_background"
+                    android:text="@string/fingerprint"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:id="@+id/ll_fingerprint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:elevation="20dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginBottom="12dp"
+                                android:text="@string/uploading_fingerprints"
+                                android:textStyle="bold" />
+
+
+                            <Button
+                                android:id="@+id/btn_uploading_fingerprints"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginBottom="12dp"
+                                android:text="Add Picture" />
+
+                            <HorizontalScrollView
+                                android:id="@+id/hsv_uploading_fingerprints"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp">
+
+                                <LinearLayout
+                                    android:id="@+id/ll_uploading_fingerprints"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal" />
+                            </HorizontalScrollView>
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+
+                <CheckBox
+                    android:id="@+id/ckb_more_details"
+                    style="@style/checkBoxText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/chk_background"
+                    android:text="@string/more_details" />
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/mcv_more_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/activity_horizontal_margin"
+                    android:visibility="gone"
+                    app:cardCornerRadius="10dp"
+                    app:cardPreventCornerOverlap="true">
+
+                    <LinearLayout
+                        android:id="@+id/ll_more_details"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginBottom="10dp"
+                            android:backgroundTint="@color/inner_background_card"
+                            android:elevation="20dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_selectpecu"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                    android:layout_marginTop="@dimen/activity_horizontal_margin"
+                                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                                    android:background="@drawable/border_acent"
+                                    android:padding="5dp"
+                                    android:text="Select Peculiarities"
+                                    android:textSize="20sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_showpecu"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                                    android:padding="10dp"
+                                    android:text="Peculiarities List::"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <com.google.android.material.chip.ChipGroup
+                                    android:id="@+id/cg_pecu"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content" />
+
+
+                                <LinearLayout
+                                    android:id="@+id/ll_other_pecu"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                    android:orientation="horizontal"
+                                    android:visibility="gone"
+
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/tv_other_pecu_txt"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="Other Description::"
+                                        android:textColor="@color/purple_700"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/tv_other_pecu"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_weight="1" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginBottom="10dp"
+                            android:backgroundTint="@color/inner_background_card"
+                            android:elevation="20dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_selectidfirst"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                    android:layout_marginTop="20dp"
+                                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+
+                                    android:background="@drawable/border_acent"
+                                    android:padding="5dp"
+                                    android:text="Select Special Identification marks"
+                                    android:textSize="20sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_showidfirst"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                                    android:padding="10dp"
+                                    android:text="Special Identification marks List"
+
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <com.google.android.material.chip.ChipGroup
+                                    android:id="@+id/cg_spl_idn_marks"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content" />
+
+                                <LinearLayout
+                                    android:id="@+id/ll_other_spl_idn_marks"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                    android:orientation="horizontal"
+                                    android:visibility="gone"
+
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/tv_other_spl_idn_marks_txt"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="Other Description::"
+                                        android:textColor="@color/purple_700"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/tv_other_spl_idn_marks"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_weight="1"
+                                        android:text="uefefgegfiebwbvj wef wuj vwfvewaf gfvef wfvf ujwevfv wfif ujgfvife hewvew hbiyfbjew b iw fewf ewvf wf iyewfj vjh web bf f " />
+
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginBottom="10dp"
+                            android:backgroundTint="@color/inner_background_card"
+
+                            android:elevation="20dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_selectidface"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                    android:layout_marginTop="20dp"
+                                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                                    android:background="@drawable/border_acent"
+                                    android:padding="5dp"
+                                    android:text="Select Face Type"
+                                    android:textSize="20sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_showidface"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                                    android:padding="10dp"
+                                    android:text="Face List"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <com.google.android.material.chip.ChipGroup
+                                    android:id="@+id/cg_face"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content" />
+
+                                <LinearLayout
+                                    android:id="@+id/ll_other_face"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                    android:orientation="horizontal"
+                                    android:visibility="gone"
+
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/tv_face_other_txt"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="Other Description::"
+                                        android:textColor="@color/purple_700"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/tv_face_other"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_weight="1"
+                                        android:text="uefefgegfiebwbvj wef wuj vwfvewaf gfvef wfvf ujwevfv wfif ujgfvife hewvew hbiyfbjew b iw fewf ewvf wf iyewfj vjh web bf f " />
+
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginBottom="10dp"
+                            android:backgroundTint="@color/inner_background_card"
+                            android:elevation="20dp"
+                            android:visibility="gone">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_selectidnose"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                    android:layout_marginTop="20dp"
+                                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+
+                                    android:background="@drawable/border_acent"
+                                    android:padding="5dp"
+                                    android:text="Select Nose Type"
+                                    android:textSize="20sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_showidnose"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                                    android:padding="10dp"
+                                    android:text="Nose List"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <com.google.android.material.chip.ChipGroup
+                                    android:id="@+id/cg_nose"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:text="@string/submit" />
+</RelativeLayout>

@@ -1,0 +1,797 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".PSLevelSubmitDeadBodyInfoActivity">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btn_submit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:fillViewport="true">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent">
+
+                <RelativeLayout
+                    style="@style/relativeHeading"
+                    android:visibility="gone">
+
+                    <TextView
+                        style="@style/textViewHeading"
+                        android:layout_centerInParent="true"
+                        android:text="@string/case_details" />
+
+                    <ImageView
+                        android:id="@+id/iv_case_deatls_arrow"
+                        style="@style/arrowHeading"
+                        app:tint="@color/white" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@color/violet_800"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:id="@+id/ll_case_details_card">
+
+                    <ImageView
+                        android:id="@+id/iv_caseDetails"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="25dp"
+                        android:src="@drawable/down_icon" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="25dp"
+                        android:text="@string/case_details"
+                        android:textColor="@color/white"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/mcv_case_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/activity_horizontal_margin"
+                    android:visibility="visible"
+                    app:cardCornerRadius="10dp"
+                    app:cardPreventCornerOverlap="true">
+
+                    <LinearLayout
+                        android:id="@+id/ll_case_details"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                            android:text="@string/police_station"
+                            android:textColor="@color/red" />
+
+                        <LinearLayout
+                            android:visibility="gone"
+                            android:id="@+id/ll_spinner_occurrence_dist"
+                            style="@style/LinearLayoutSpinner"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="@dimen/activity_horizontal_margin"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="12dp">
+
+                            <Spinner
+                                android:id="@+id/spinner_occurrence_dist"
+                                android:visibility="visible"
+                                style="@style/Spinner" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/ll_tv_police_station_name"
+                            style="@style/LinearLayoutSpinner"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="12dp">
+
+                            <TextView
+                                android:id="@+id/text_view_police"
+                                style="@style/Spinner"
+                                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                android:gravity="center_vertical"
+                                android:hint="Select Case Date" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                            android:text="@string/morgue_list"
+                            android:textColor="@color/red" />
+
+                        <LinearLayout
+                            android:id="@+id/ll_spinner_morgue_list"
+                            style="@style/LinearLayoutSpinner"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="@dimen/activity_horizontal_margin"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="12dp">
+
+                            <Spinner
+                                android:id="@+id/spinner_morgue"
+                                style="@style/Spinner" />
+                        </LinearLayout>
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                            android:visibility="gone"
+                            android:text="* Police Station:"
+                            android:textColor="@color/red" />
+
+                        <LinearLayout
+                            android:id="@+id/ll_spinner_occurrence_ps"
+                            style="@style/LinearLayoutSpinner"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:visibility="gone"
+                            android:layout_marginBottom="12dp">
+
+                            <Spinner
+                                android:id="@+id/spinner_occurrence_ps"
+                                style="@style/Spinner" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                            android:text="* UD Case No:"
+                            android:textColor="@color/red" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_case_number"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="12dp"
+                            android:hint="@string/ud_case_number">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/tiet_case_number"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <TextView
+                            android:id="@+id/tv_case_date_txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                            android:gravity="bottom"
+                            android:hint="* UD Case Date"
+                            android:textColorHint="@color/red" />
+
+                        <LinearLayout
+                            android:id="@+id/ll_tv_case_date"
+                            style="@style/LinearLayoutSpinner"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="12dp">
+
+                            <TextView
+                                android:id="@+id/tv_case_date"
+                                style="@style/Spinner"
+                                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                android:gravity="center_vertical"
+                                android:hint="Select Case Date" />
+                        </LinearLayout>
+
+
+                        <!--
+                                                <com.google.android.material.textfield.TextInputLayout
+                                                    android:id="@+id/til_fir_no"
+                                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginStart="10dp"
+                                                    android:layout_marginEnd="10dp"
+                                                    android:layout_marginBottom="12dp"
+                                                    android:hint="@string/tv5">
+
+                                                    <com.google.android.material.textfield.TextInputEditText
+                                                        android:id="@+id/tiet_fir_no"
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content" />
+
+                                                </com.google.android.material.textfield.TextInputLayout>
+                        -->
+
+                        <!--
+                                                <com.google.android.material.textfield.TextInputLayout
+                                                    android:id="@+id/til_fir_section"
+                                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginStart="10dp"
+                                                    android:layout_marginEnd="10dp"
+                                                    android:layout_marginBottom="12dp"
+                                                    android:hint="@string/fir_sec">
+
+                                                    <com.google.android.material.textfield.TextInputEditText
+                                                        android:id="@+id/tiet_fir_section"
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content" />
+
+                                                </com.google.android.material.textfield.TextInputLayout>
+                        -->
+
+                        <!--<TextView
+                            android:id="@+id/tv_fir_date_txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                            android:gravity="bottom"
+                            android:hint="FIR Date" />
+
+                        <LinearLayout
+                            android:id="@+id/ll_tv_fir_date"
+                            style="@style/LinearLayoutSpinner"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="12dp">
+
+                            <TextView
+                                android:id="@+id/tv_fir_date"
+                                style="@style/Spinner"
+                                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                android:gravity="center_vertical"
+                                android:hint="Select FIR Date" />
+                        </LinearLayout>-->
+
+                        <!--<TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                            android:text="* GD Reference:"
+                            android:textColor="@color/red"/>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_gd_reference"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="12dp"
+                            android:hint="@string/gd_reference">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/tiet_gd_reference"
+                                android:inputType="numberDecimal"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+-->
+
+                        <!-- <TextView
+                             android:id="@+id/tv_gde_date_txt"
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                             android:gravity="bottom"
+                             android:hint="* GDE Date"
+                             android:textColorHint="@color/red"/>
+
+                         <LinearLayout
+                             android:id="@+id/ll_tv_gde_date"
+                             style="@style/LinearLayoutSpinner"
+                             android:layout_marginStart="10dp"
+                             android:layout_marginEnd="10dp"
+                             android:layout_marginBottom="12dp">
+
+                             <TextView
+                                 android:id="@+id/tv_gde_date"
+                                 style="@style/Spinner"
+                                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                 android:gravity="center_vertical"
+                                 android:hint="Select GDE Date" />
+                         </LinearLayout>
+ -->
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                            android:text="* Name of UD Case Officer"
+                            android:textColor="@color/red" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_ud_case_officer_name"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="12dp"
+                            android:hint="@string/ud_case_officer_name">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/tiet_ud_case_officer_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_ud_case_officer_contact_no"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="12dp"
+                            android:hint="@string/ud_case_officer_contact_no">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/tiet_ud_case_officer_contact_no"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ems="10"
+                                android:inputType="phone"
+                                android:maxLength="11" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <TextView
+                            android:id="@+id/tv_gender_txt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="@dimen/activity_horizontal_margin"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="12dp"
+                            android:text="Gender"
+                            android:textColor="@color/heading_txt"
+                            android:textStyle="bold" />
+
+                        <RadioGroup
+                            android:id="@+id/rg_gender"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="12dp"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/rb_male"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Male" />
+
+                            <RadioButton
+                                android:id="@+id/rb_female"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Female" />
+
+                            <RadioButton
+                                android:id="@+id/rb_other"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Other" />
+
+                        </RadioGroup>
+                        <!--
+
+
+                                                <TextView
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                                    android:text="* Name of Inquest Officer"
+                                                    android:textColor="@color/red" />
+
+                                                <com.google.android.material.textfield.TextInputLayout
+                                                    android:id="@+id/til_inquest_Officer"
+                                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginStart="10dp"
+                                                    android:layout_marginEnd="10dp"
+                                                    android:layout_marginBottom="12dp"
+                                                    android:hint="@string/inquest_Officer">
+
+                                                    <com.google.android.material.textfield.TextInputEditText
+                                                        android:id="@+id/tiet_inquest_Officer"
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content" />
+
+                                                </com.google.android.material.textfield.TextInputLayout>
+
+                                                <com.google.android.material.textfield.TextInputLayout
+                                                    android:id="@+id/til_inquest_case_officer_contact_no"
+                                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginStart="10dp"
+                                                    android:layout_marginEnd="10dp"
+                                                    android:layout_marginBottom="12dp"
+                                                    android:hint="@string/inquest_officer_contact_no">
+
+                                                    <com.google.android.material.textfield.TextInputEditText
+                                                        android:id="@+id/tiet_inquest_officer_contact_no"
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:ems="10"
+                                                        android:inputType="phone"
+                                                        android:maxLength="11" />
+
+                                                </com.google.android.material.textfield.TextInputLayout>
+                        -->
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/mcv_place_where_d_body_found"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginBottom="10dp"
+                            android:backgroundTint="@color/inner_background_card"
+                            android:elevation="20dp">
+
+                            <LinearLayout
+                                android:id="@+id/ll_place_where_dead_body_found"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_place_where_dead_body_found_txt"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                    android:layout_marginTop="@dimen/activity_horizontal_margin"
+                                    android:gravity="bottom"
+                                    android:visibility="gone"
+                                    android:text="@string/place_where_dead_body_found"
+                                    android:textColor="@color/red" />
+
+
+                                <RelativeLayout
+                                    android:visibility="gone"
+                                    android:id="@+id/rl_lat_long_btn"
+                                    style="@style/Spinner"
+                                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                    android:layout_marginRight="@dimen/activity_horizontal_margin">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerVertical="true"
+                                        android:text="Choose live Lat Long (PO)" />
+
+                                    <Switch
+                                        android:id="@+id/location_switch"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentRight="true"
+                                        android:layout_centerVertical="true"
+                                        android:checked="false" />
+                                </RelativeLayout>
+
+                                <LinearLayout
+                                    android:visibility="gone"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                                    android:orientation="horizontal">
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        android:id="@+id/til_latitude"
+                                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1">
+
+                                        <com.google.android.material.textfield.TextInputEditText
+                                            android:id="@+id/tiet_latitude"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:hint="@string/latitude"
+                                            android:inputType="numberDecimal" />
+                                    </com.google.android.material.textfield.TextInputLayout>
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        android:id="@+id/til_longitude"
+                                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_weight="1">
+
+                                        <com.google.android.material.textfield.TextInputEditText
+                                            android:id="@+id/tiet_longitude"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:hint="@string/longitude"
+                                            android:inputType="numberDecimal" />
+                                    </com.google.android.material.textfield.TextInputLayout>
+
+                                </LinearLayout>
+
+
+                                <TextView
+                                    android:id="@+id/tv_where_dead_body_txt"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                    android:layout_marginTop="@dimen/activity_horizontal_margin"
+                                    android:gravity="bottom"
+                                    android:hint="If you want to add more details about the place of occurance(P.O), then please add here" />
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/til_place_where_dead_body_found"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginBottom="12dp">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/tiet_place_where_dead_body_found"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+
+                            </LinearLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <LinearLayout
+                            android:id="@+id/ll_identical_marks"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_identical_marks_txt"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginBottom="12dp"
+                                android:text="@string/poc_image"
+                                android:textStyle="bold" />
+
+
+                            <Button
+                                android:id="@+id/btn_identical_marks"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginBottom="20dp"
+                                android:backgroundTint="@color/violet_800"
+                                android:text="Add Picture"
+                                />
+
+                            <LinearLayout
+                                android:id="@+id/ll_ps_level_imageview"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:visibility="gone">
+
+                                <HorizontalScrollView
+                                    android:id="@+id/hsv_identical_marks"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="10dp">
+
+                                    <LinearLayout
+                                        android:id="@+id/ll_identical_marks_pic"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal" />
+                                </HorizontalScrollView>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- dead_body_details-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/tweenty"
+                    android:layout_marginRight="@dimen/tweenty">
+                    <RadioGroup
+                        android:gravity="center_horizontal"
+                        android:id="@+id/rg_deadbodytype"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_above="@+id/view_below" >
+
+                        <RadioButton
+                            android:id="@+id/rb_identifed"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="Identified" />
+
+                        <RadioButton
+                            android:id="@+id/rb_unidentified"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="Unidentified" />
+                    </RadioGroup>
+                </LinearLayout>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/identified_body_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/activity_horizontal_margin"
+                    android:visibility="gone"
+                    app:cardCornerRadius="10dp"
+                    app:cardPreventCornerOverlap="true">
+
+                    <LinearLayout
+                        android:id="@+id/ll_victim_details"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                            android:text="@string/name_victim"
+                            android:textColor="@color/heading_txt"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_victim_name"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="12dp"
+                            android:hint="Name of Deceased">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/tiet_victim_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                            android:text="@string/age_victim"
+                            android:textColor="@color/heading_txt"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_victim_age"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="12dp"
+                            android:hint="@string/age_victim">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/tiet_victim_age"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="number"/>
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                            android:text="@string/address_victim"
+                            android:textColor="@color/heading_txt"
+                            android:textStyle="bold" />
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_victim_adress"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="12dp"
+                            android:hint="@string/address_victim">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/tiet_victim_address"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"/>
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        android:backgroundTint="@color/violet_800"
+        android:text="@string/submit"
+        android:textStyle="bold"
+
+        app:layout_constraintBottom_toBottomOf="@+id/scrollView"/>
+
+</RelativeLayout>

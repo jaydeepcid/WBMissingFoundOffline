@@ -1,0 +1,1625 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MorgueLevelSubmitInfoActivity">
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btn_submit">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    style="@style/relativeHeading"
+                    android:visibility="gone">
+
+                    <TextView
+                        style="@style/textViewHeading"
+                        android:layout_centerInParent="true"
+                        android:text="@string/case_details" />
+
+                    <ImageView
+                        android:id="@+id/iv_case_deatls_arrow"
+                        style="@style/arrowHeading"
+                        app:tint="@color/white" />
+                </RelativeLayout>
+
+
+                <!-- dead_body_details-->
+
+
+                <RelativeLayout
+                    style="@style/relativeHeading"
+                    android:visibility="gone">
+
+                    <TextView
+                        style="@style/textViewHeading"
+                        android:layout_centerInParent="true"
+                        android:text="@string/dead_body_details" />
+
+                    <ImageView
+                        android:id="@+id/iv_dead_body_details_arrow"
+                        style="@style/arrowHeading"
+                        app:tint="@color/white" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_deatils_body"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@color/violet_800">
+
+                    <ImageView
+                        android:id="@+id/iv_deadBodyDetails"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="25dp"
+                        android:src="@drawable/down_icon"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="25dp"
+                        android:text="@string/dead_body_details"
+                        android:layout_gravity="center"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"/>
+                </LinearLayout>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/mcv_dead_body_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/activity_horizontal_margin"
+                    android:visibility="gone"
+                    app:cardCornerRadius="10dp"
+                    app:cardPreventCornerOverlap="true">
+
+                    <LinearLayout
+                        android:id="@+id/ll_ckb_dead_body_details"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="12dp"
+                            android:text="@string/general_condition"
+                            android:textColor="@color/red"
+                            android:textStyle="bold" />
+
+                        <RadioGroup
+                            android:id="@+id/rb_general_condition"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="12dp"
+                            android:orientation="vertical">
+
+                            <RadioButton
+                                android:id="@+id/rb_complete_body"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Complete Body" />
+
+                            <RadioButton
+                                android:id="@+id/rb_incomplete_body"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Incomplete Body" />
+
+                            <RadioButton
+                                android:id="@+id/rb_decomposed"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Decomposed Body" />
+
+                            <RadioButton
+                                android:id="@+id/rb_partially_skeletonized"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Partial Skeleton" />
+
+                            <RadioButton
+                                android:id="@+id/rb_fully_skeletonized"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Full Skeleton" />
+
+                            <RadioButton
+                                android:id="@+id/rb_burnt"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Burnt Body" />
+
+                        </RadioGroup>
+
+
+                        <TextView
+                            android:id="@+id/tv_age_txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                            android:gravity="bottom"
+                            android:hint="* Select approx age range of dead body"
+                            android:textColorHint="@color/red" />
+
+                        <Spinner
+                            android:id="@+id/spn_agerange"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="12dp"
+                            android:gravity="center_vertical" />
+                        <!--
+                                                <LinearLayout
+                                                    android:id="@+id/ll_form_and_to_date"
+                                                    style="@style/LinearLayoutSpinner"
+                                                    android:layout_marginStart="10dp"
+                                                    android:layout_marginEnd="10dp"
+                                                    android:layout_marginBottom="12dp">
+
+                                                    <TextView
+                                                        android:id="@+id/tv_form_and_to_date"
+                                                        style="@style/Spinner"
+                                                        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                                        android:gravity="center_vertical"
+                                                        android:hint="Select Form and To date" />
+                                                </LinearLayout>
+                        -->
+
+
+                        <TextView
+                            android:id="@+id/tv_height_txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                            android:gravity="bottom"
+                            android:hint="* Select approx height of dead body"
+                            android:textColorHint="@color/red" />
+
+                        <LinearLayout
+                            android:id="@+id/ll_height"
+                            style="@style/LinearLayoutSpinner"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="12dp">
+
+                            <TextView
+                                android:id="@+id/tv_height"
+                                style="@style/Spinner"
+                                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                android:gravity="center_vertical"
+                                android:hint="Select height" />
+                        </LinearLayout>
+
+
+                        <TextView
+                            android:id="@+id/tv_gender_txt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="@dimen/activity_horizontal_margin"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="12dp"
+                            android:text="* Gender"
+                            android:textColor="@color/red"
+                            android:textStyle="bold" />
+
+                        <RadioGroup
+                            android:id="@+id/rg_gender"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="12dp"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/rb_male"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Male" />
+
+                            <RadioButton
+                                android:id="@+id/rb_female"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Female" />
+
+                            <RadioButton
+                                android:id="@+id/rb_other"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Other" />
+
+                        </RadioGroup>
+
+
+                        <!--
+                                                <com.google.android.material.textfield.TextInputLayout
+                                                    android:id="@+id/til_details_of_injury_mark"
+                                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginStart="10dp"
+                                                    android:layout_marginEnd="10dp"
+                                                    android:layout_marginBottom="12dp"
+                                                    android:hint="@string/details_of_injury_mark">
+
+                                                    <com.google.android.material.textfield.TextInputEditText
+                                                        android:id="@+id/tiet_details_of_injury_mark"
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content" />
+
+                                                </com.google.android.material.textfield.TextInputLayout>
+                        -->
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="@dimen/activity_horizontal_margin"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="12dp"
+                            android:text="Male Private Part Circumcised"
+                            android:textStyle="bold" />
+
+                        <RadioGroup
+                            android:layout_width="match_parent"
+                            android:id="@+id/radioGroup1"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="12dp"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/rb_yes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:id="@+id/rb_no"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="No" />
+
+                        </RadioGroup>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/mcv_identical_marks"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="5dp"
+                            android:visibility="gone"
+                            android:layout_marginBottom="10dp"
+                            android:backgroundTint="@color/inner_background_card"
+                            android:elevation="20dp">
+
+
+                            <LinearLayout
+                                android:id="@+id/ll_identical_marks"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_identical_marks_txt"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginBottom="12dp"
+                                    android:text="@string/any_visible_identification_marks"
+                                    android:textStyle="bold" />
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/til_identical_marks"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginBottom="12dp"
+                                    android:hint="@string/any_visible_identification_marks_hint">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/tiet_identical_marks"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <Button
+                                    android:id="@+id/btn_identical_marks"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginBottom="12dp"
+                                    android:backgroundTint="@color/violet_800"
+                                    android:text="Add Picture" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <HorizontalScrollView
+                                        android:id="@+id/hsv_identical_marks"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="10dp">
+
+                                        <LinearLayout
+                                            android:id="@+id/ll_identical_marks_pic"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal" />
+                                    </HorizontalScrollView>
+                                </LinearLayout>
+                            </LinearLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/mcv_personal_item"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginBottom="10dp"
+                            android:backgroundTint="@color/inner_background_card"
+                            android:elevation="20dp">
+
+                            <LinearLayout
+                                android:id="@+id/ll_personal_item"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_personal_items_of_the_body_txt"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginBottom="12dp"
+                                    android:text="@string/personal_items_of_the_body"
+                                    android:textStyle="bold" />
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btn_personal_items_add"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="?attr/actionBarSize"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_marginStart="@dimen/activity_horizontal_margin"
+                                    android:layout_marginTop="@dimen/activity_horizontal_margin"
+                                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                                    android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                                    android:backgroundTint="@color/violet_800"
+                                    android:text="@string/add"
+                                    android:textStyle="bold" />
+
+                                <LinearLayout
+                                    android:visibility="gone"
+                                    android:id="@+id/ll_personal_item_dailouge_lin"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        android:id="@+id/til_personal_items_of_the_body"
+                                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginEnd="10dp"
+                                        android:layout_marginBottom="12dp"
+                                        android:hint="@string/personal_items_of_the_body_hint">
+
+                                        <com.google.android.material.textfield.TextInputEditText
+                                            android:id="@+id/tiet_personal_items_of_the_body"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:editable="false"
+
+                                            android:inputType="none"
+                                            android:longClickable="false" />
+
+                                    </com.google.android.material.textfield.TextInputLayout>
+                                </LinearLayout>
+
+
+
+                                <TextView
+                                    android:id="@+id/tv_show_personalitem"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                                    android:padding="10dp"
+                                    android:text="Personal Items List::"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <com.google.android.material.chip.ChipGroup
+                                    android:id="@+id/cg_pitem"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content" />
+
+
+                                <LinearLayout
+                                    android:id="@+id/ll_peritems"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                    android:orientation="horizontal"
+                                    android:visibility="gone">
+
+
+                                </LinearLayout>
+
+                                <!--<Button
+                                    android:id="@+id/btn_personal_items_of_the_body"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginBottom="12dp"
+                                    android:backgroundTint="@color/violet_800"
+                                    android:text="Add Picture" />-->
+
+                                <HorizontalScrollView
+                                    android:id="@+id/hsv_personal_items_of_the_body"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="10dp">
+
+                                    <LinearLayout
+                                        android:id="@+id/ll_personal_items_of_the_body"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal" />
+                                </HorizontalScrollView>
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:id="@+id/ll_photograph_body"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@color/violet_800">
+
+                    <ImageView
+                        android:id="@+id/iv_deadBodyPhoto"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="25dp"
+                        android:src="@drawable/down_icon"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="25dp"
+                        android:text="@string/photographs_"
+                        android:layout_gravity="center"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_photograph_fingerprint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:elevation="20dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_photo_face_txt"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginBottom="12dp"
+                                    android:text="@string/uploading_photograph_of_face"
+                                    android:textStyle="bold" />
+
+
+                                <Button
+                                    android:id="@+id/btn_pic_face"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginBottom="12dp"
+                                    android:backgroundTint="@color/violet_800"
+                                    android:text="Add Picture" />
+
+                                <HorizontalScrollView
+                                    android:id="@+id/hsv_pic_face"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="10dp">
+
+                                    <LinearLayout
+                                        android:id="@+id/ll_pic_face"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal" />
+                                </HorizontalScrollView>
+                                <Button
+                                    android:id="@+id/btn_pic_face_uoload"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:visibility="gone"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginBottom="12dp"
+                                    android:backgroundTint="@color/violet_800"
+                                    android:text="Upload" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/ll_photo_body"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_photobody_txt"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginBottom="12dp"
+                                    android:text="@string/uploading_photograph_of_body"
+                                    android:textStyle="bold" />
+
+
+                                <Button
+                                    android:id="@+id/btn_pic_body"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+
+                                    android:layout_marginBottom="12dp"
+                                    android:backgroundTint="@color/violet_800"
+                                    android:text="Add Picture" />
+
+                                <HorizontalScrollView
+                                    android:id="@+id/hsv_pic_body"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="10dp">
+
+                                    <LinearLayout
+                                        android:id="@+id/ll_pic_body"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal" />
+                                </HorizontalScrollView>
+                                <Button
+                                    android:id="@+id/btn_pic_body_uoload"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:visibility="gone"
+                                    android:layout_marginBottom="12dp"
+                                    android:backgroundTint="@color/violet_800"
+                                    android:text="Upload" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <com.google.android.material.card.MaterialCardView
+                                    android:id="@+id/mcv_wearingapparels"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginRight="5dp"
+                                    android:layout_marginBottom="10dp"
+                                    android:backgroundTint="@color/violet_50"
+                                    android:elevation="20dp"
+                                    app:cardCornerRadius="15dp">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:id="@+id/tv_photowearapp_txt"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="10dp"
+                                            android:layout_marginTop="12dp"
+                                            android:layout_marginEnd="10dp"
+                                            android:layout_marginBottom="12dp"
+                                            android:text="@string/uploading_photograph_of_wearing_apparels"
+                                            android:textStyle="bold" />
+
+                                        <Spinner
+                                            android:id="@+id/spn_wearingapp"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="10dp"
+                                            android:layout_marginTop="10dp"
+                                            android:layout_marginEnd="10dp"
+                                            android:layout_marginBottom="12dp"
+                                            android:gravity="center_vertical" />
+
+
+                                        <Button
+                                            android:id="@+id/btn_pic_wa"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="10dp"
+                                            android:layout_marginEnd="10dp"
+                                            android:layout_marginBottom="12dp"
+                                            android:backgroundTint="@color/violet_800"
+                                            android:text="Add Picture" />
+
+                                        <HorizontalScrollView
+                                            android:id="@+id/hsv_pic_wa"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginBottom="10dp">
+
+                                            <LinearLayout
+                                                android:id="@+id/ll_pic_wa"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:orientation="horizontal" />
+                                        </HorizontalScrollView>
+                                        <Button
+                                            android:id="@+id/btn_pic_cloth_upload"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="10dp"
+                                            android:layout_marginEnd="10dp"
+                                            android:visibility="gone"
+                                            android:layout_marginBottom="12dp"
+                                            android:backgroundTint="@color/violet_800"
+                                            android:text="Upload" />
+                                    </LinearLayout>
+                                </com.google.android.material.card.MaterialCardView>
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/ll_footware"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <com.google.android.material.card.MaterialCardView
+                                    android:id="@+id/mcv_footware"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginRight="5dp"
+                                    android:layout_marginBottom="10dp"
+                                    android:backgroundTint="@color/violet_50"
+                                    android:elevation="20dp"
+                                    app:cardCornerRadius="15dp">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:id="@+id/tv_footware_txt"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="10dp"
+                                            android:layout_marginTop="12dp"
+                                            android:layout_marginEnd="10dp"
+                                            android:layout_marginBottom="12dp"
+                                            android:text="@string/footware_apparels"
+                                            android:textStyle="bold" />
+
+                                        <Spinner
+                                            android:id="@+id/spn_footware"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="10dp"
+                                            android:layout_marginTop="10dp"
+                                            android:layout_marginEnd="10dp"
+                                            android:layout_marginBottom="12dp"
+                                            android:gravity="center_vertical" />
+
+                                        <com.google.android.material.textfield.TextInputLayout
+                                            android:id="@+id/til_footware"
+                                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="10dp"
+                                            android:layout_marginEnd="10dp"
+                                            android:layout_marginBottom="12dp"
+                                            android:baselineAligned="false"
+                                            android:hint="@string/footware_details">
+
+                                            <com.google.android.material.textfield.TextInputEditText
+                                                android:id="@+id/tiet_footware"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content" />
+
+                                        </com.google.android.material.textfield.TextInputLayout>
+
+                                        <Button
+                                            android:id="@+id/btn_footware"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="10dp"
+                                            android:layout_marginEnd="10dp"
+                                            android:layout_marginBottom="12dp"
+                                            android:backgroundTint="@color/violet_800"
+                                            android:text="Add Picture" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal">
+
+                                            <HorizontalScrollView
+                                                android:id="@+id/hsv_footware"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginBottom="10dp">
+
+                                                <LinearLayout
+                                                    android:id="@+id/ll_footware_pic"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:orientation="horizontal" />
+                                            </HorizontalScrollView>
+
+                                        </LinearLayout>
+                                        <Button
+                                            android:id="@+id/btn_pic_footwear_upload"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="10dp"
+                                            android:layout_marginEnd="10dp"
+                                            android:visibility="gone"
+                                            android:layout_marginBottom="12dp"
+                                            android:backgroundTint="@color/violet_800"
+                                            android:text="Upload" />
+
+
+                                    </LinearLayout>
+                                </com.google.android.material.card.MaterialCardView>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginEnd="10dp"
+                                        android:layout_marginBottom="12dp"
+                                        android:text="@string/uploading_photograph_of_others"
+                                        android:textStyle="bold" />
+
+
+                                    <Button
+                                        android:id="@+id/btn_pic_others"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginEnd="10dp"
+                                        android:layout_marginBottom="12dp"
+                                        android:backgroundTint="@color/violet_800"
+                                        android:text="Add Picture" />
+
+                                    <HorizontalScrollView
+                                        android:id="@+id/hsv_pic_others"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="10dp">
+
+                                        <LinearLayout
+                                            android:id="@+id/ll_pic_others"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal" />
+                                    </HorizontalScrollView>
+                                    <Button
+                                        android:id="@+id/btn_pic_others_upload"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginEnd="10dp"
+                                        android:visibility="gone"
+                                        android:layout_marginBottom="12dp"
+                                        android:backgroundTint="@color/violet_800"
+                                        android:text="Upload" />
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+
+
+                </LinearLayout>
+
+                <CheckBox
+                    android:id="@+id/ckb_fingerprint"
+                    style="@style/checkBoxText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/chk_background"
+                    android:text="@string/fingerprint"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:id="@+id/ll_fingerprint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:elevation="20dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginBottom="12dp"
+                                android:text="@string/uploading_fingerprints"
+                                android:textStyle="bold" />
+
+
+                            <Button
+                                android:id="@+id/btn_uploading_fingerprints"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginBottom="12dp"
+                                android:text="Add Picture" />
+
+                            <HorizontalScrollView
+                                android:id="@+id/hsv_uploading_fingerprints"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp">
+
+                                <LinearLayout
+                                    android:id="@+id/ll_uploading_fingerprints"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal" />
+                            </HorizontalScrollView>
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/ll_more_details_body"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@color/violet_800">
+
+                    <ImageView
+                        android:id="@+id/iv_moreDetails"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="25dp"
+                        android:src="@drawable/down_icon"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="25dp"
+                        android:text="@string/more_details"
+                        android:layout_gravity="center"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"/>
+                </LinearLayout>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/mcv_more_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/activity_horizontal_margin"
+                    android:visibility="gone"
+                    app:cardCornerRadius="10dp"
+                    app:cardPreventCornerOverlap="true">
+
+                    <LinearLayout
+                        android:id="@+id/ll_more_details"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+
+                        <!--<com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginBottom="10dp"
+                            android:backgroundTint="@color/violet_50"
+                            android:elevation="20dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_selectpecu"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                    android:layout_marginTop="@dimen/activity_horizontal_margin"
+                                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                                    android:background="@drawable/border_acent"
+                                    android:padding="5dp"
+                                    android:text="Select Peculiarities"
+                                    android:textSize="20sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_showpecu"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                                    android:padding="10dp"
+                                    android:text="Peculiarities List::"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <com.google.android.material.chip.ChipGroup
+                                    android:id="@+id/cg_pecu"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content" />
+
+
+                                <LinearLayout
+                                    android:id="@+id/ll_other_pecu"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                    android:orientation="horizontal"
+                                    android:visibility="gone"
+
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/tv_other_pecu_txt"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="Other Description::"
+                                        android:textColor="@color/purple_700"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/tv_other_pecu"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_weight="1" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+-->
+                        <!--<com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginBottom="10dp"
+                            android:backgroundTint="@color/inner_background_card"
+                            android:elevation="20dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_selectidfirst"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                    android:layout_marginTop="20dp"
+                                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+
+                                    android:background="@drawable/border_acent"
+                                    android:padding="5dp"
+                                    android:text="Select Special Identification marks"
+                                    android:textSize="20sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_showidfirst"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                                    android:padding="10dp"
+                                    android:text="Special Identification marks List"
+
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <com.google.android.material.chip.ChipGroup
+                                    android:id="@+id/cg_spl_idn_marks"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content" />
+
+                                <LinearLayout
+                                    android:id="@+id/ll_other_spl_idn_marks"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                    android:orientation="horizontal"
+                                    android:visibility="gone"
+
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/tv_other_spl_idn_marks_txt"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="Other Description::"
+                                        android:textColor="@color/purple_700"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/tv_other_spl_idn_marks"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_weight="1"
+                                        android:text="uefefgegfiebwbvj wef wuj vwfvewaf gfvef wfvf ujwevfv wfif ujgfvife hewvew hbiyfbjew b iw fewf ewvf wf iyewfj vjh web bf f " />
+
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </com.google.android.material.card.MaterialCardView>-->
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginBottom="10dp"
+                            android:backgroundTint="@color/violet_50"
+                            android:elevation="20dp">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:text="Pecularities"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold" />
+
+                                <Button
+                                    android:id="@+id/btn_pecu_add"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginTop="12dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginBottom="12dp"
+                                    android:backgroundTint="@color/violet_800"
+                                    android:text=" + Add" />
+
+                                <TextView
+                                    android:id="@+id/tv_show_peculist"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                                    android:padding="10dp"
+                                    android:text="Peculiarities List::"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <com.google.android.material.chip.ChipGroup
+                                    android:id="@+id/cg_pecu"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content" />
+
+
+                                <LinearLayout
+                                    android:id="@+id/ll_pecu"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                    android:orientation="horizontal"
+                                    android:visibility="gone">
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginBottom="10dp"
+                            android:backgroundTint="@color/violet_50"
+                            android:elevation="20dp">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:text="@string/special_identification_marks_heading"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold" />
+
+                                <!--<TextView
+                                    android:id="@+id/tv_select_spec_type"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                    android:layout_marginTop="@dimen/activity_horizontal_margin"
+                                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                                    android:background="@drawable/border_acent"
+                                    android:padding="5dp"
+                                    android:text="Select Type"
+                                    android:textSize="20sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_select_spec_location"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                    android:layout_marginTop="@dimen/activity_horizontal_margin"
+                                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                                    android:background="@drawable/border_acent"
+                                    android:padding="5dp"
+                                    android:text="Select Location of Body"
+                                    android:textSize="20sp" />
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/til_Specify_mark"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginTop="12dp"
+                                    android:layout_marginBottom="12dp"
+                                    android:hint="@string/details_of_injury_mark">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/tiet_Specify_mark"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+-->
+                                <Button
+                                    android:id="@+id/btn_spc_add"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginTop="12dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginBottom="12dp"
+                                    android:backgroundTint="@color/violet_800"
+                                    android:text=" + Add" />
+
+                                <TextView
+                                    android:id="@+id/tv_show_spc_iden"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                                    android:padding="10dp"
+                                    android:text="Special Identification Marks List::"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <com.google.android.material.chip.ChipGroup
+                                    android:id="@+id/cg_spc_iden"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content" />
+
+
+                                <LinearLayout
+                                    android:id="@+id/ll_spc_iden"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                    android:orientation="horizontal"
+                                    android:visibility="gone">
+
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <HorizontalScrollView
+                                        android:id="@+id/hsv_spcIdenMarks"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="10dp">
+
+                                        <LinearLayout
+                                            android:id="@+id/ll_spcIdenMarks"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal" />
+                                    </HorizontalScrollView>
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginBottom="10dp"
+                            android:backgroundTint="@color/violet_50"
+                            android:elevation="20dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_selecthair"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                    android:layout_marginTop="@dimen/activity_horizontal_margin"
+                                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                                    android:background="@drawable/border_acent"
+                                    android:padding="5dp"
+                                    android:text="Select Hair Type"
+                                    android:textSize="20sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_showhair"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                                    android:padding="10dp"
+                                    android:text="Hair Type List::"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+
+                                <com.google.android.material.chip.ChipGroup
+                                    android:id="@+id/cg_hair"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content" />
+
+
+                                <LinearLayout
+                                    android:id="@+id/ll_other_hair"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                    android:orientation="horizontal"
+                                    android:visibility="gone"
+
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/tv_other_hair_txt"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="Other Description::"
+                                        android:textColor="@color/purple_700"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/tv_other_hair"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_weight="1" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginBottom="10dp"
+                            android:backgroundTint="@color/violet_50"
+                            android:elevation="20dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_selecthaircolor"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                    android:layout_marginTop="@dimen/activity_horizontal_margin"
+                                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                                    android:background="@drawable/border_acent"
+                                    android:padding="5dp"
+                                    android:text="Select Hair Color"
+                                    android:textSize="20sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_showhaircolor"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                                    android:padding="10dp"
+                                    android:text="Hair Color List::"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <com.google.android.material.chip.ChipGroup
+                                    android:id="@+id/cg_haircolor"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content" />
+
+
+                                <LinearLayout
+                                    android:id="@+id/ll_other_haircolor"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                    android:orientation="horizontal"
+                                    android:visibility="gone"
+
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/tv_other_haircolor_txt"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="Other Description::"
+                                        android:textColor="@color/purple_700"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/tv_other_haircolor"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_weight="1" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginBottom="10dp"
+                            android:backgroundTint="@color/inner_background_card"
+                            android:elevation="20dp"
+                            android:visibility="gone">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_selectidnose"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                    android:layout_marginTop="20dp"
+                                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+
+                                    android:background="@drawable/border_acent"
+                                    android:padding="5dp"
+                                    android:text="Select Nose Type"
+                                    android:textSize="20sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_showidnose"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                                    android:padding="10dp"
+                                    android:text="Nose List"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <com.google.android.material.chip.ChipGroup
+                                    android:id="@+id/cg_nose"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        android:backgroundTint="@color/violet_800"
+        android:text="@string/submit"
+        android:textStyle="bold" />
+
+</RelativeLayout>

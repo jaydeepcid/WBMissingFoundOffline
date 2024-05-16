@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PermissionActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lav_animation_logo"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/permission_home" />
+
+            <TextView
+                android:id="@+id/tv_permission_heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:gravity="center_horizontal"
+                android:text="@string/permission_title"
+                android:textColor="@color/permission_heading"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lav_animation_logo" />
+
+            <TextView
+                android:id="@+id/tv_permission_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:gravity="center_horizontal"
+                android:text="@string/permission_description"
+                android:textColor="@color/permission_description"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_permission_heading" />
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/mcv_camera"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_horizontal_margin"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_permission_description">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp">
+
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:id="@+id/lav_camera"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:lottie_autoPlay="true"
+                        app:lottie_loop="true"
+                        app:lottie_rawRes="@raw/permission_camera" />
+
+
+                    <TextView
+                        android:id="@+id/tv_camera_heading"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                        android:layout_marginRight="@dimen/activity_horizontal_margin"
+                        android:text="@string/camera_access_heading"
+
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@+id/switch_camera"
+                        app:layout_constraintStart_toEndOf="@+id/lav_camera"
+                        app:layout_constraintTop_toTopOf="parent"
+
+                        />
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="@dimen/activity_horizontal_margin"
+                        android:text="@string/camera_access_description"
+                        android:textColor="@color/per_sub_des"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toStartOf="@+id/switch_camera"
+                        app:layout_constraintStart_toEndOf="@+id/lav_camera"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_camera_heading" />
+
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switch_camera"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/mcv_location"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_horizontal_margin"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mcv_camera">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp">
+
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:id="@+id/lav_location"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:lottie_autoPlay="true"
+                        app:lottie_loop="true"
+                        app:lottie_rawRes="@raw/permission_location" />
+
+
+                    <TextView
+                        android:id="@+id/tv_location_heading"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                        android:layout_marginRight="@dimen/activity_horizontal_margin"
+                        android:text="@string/location_access_heading"
+
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@+id/switch_location"
+                        app:layout_constraintStart_toEndOf="@+id/lav_location"
+                        app:layout_constraintTop_toTopOf="parent"
+
+                        />
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="@dimen/activity_horizontal_margin"
+                        android:text="@string/location_access_description"
+                        android:textColor="@color/per_sub_des"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toStartOf="@+id/switch_location"
+                        app:layout_constraintStart_toEndOf="@+id/lav_location"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_location_heading" />
+
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switch_location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/mvc_photo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_horizontal_margin"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mcv_location">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp">
+
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:id="@+id/lav_photo"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:lottie_autoPlay="true"
+                        app:lottie_loop="true"
+                        app:lottie_rawRes="@raw/permission_storage" />
+
+
+                    <TextView
+                        android:id="@+id/tv_photo_heading"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                        android:layout_marginRight="@dimen/activity_horizontal_margin"
+                        android:text="@string/location_access_heading"
+
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@+id/switch_photo"
+                        app:layout_constraintStart_toEndOf="@+id/lav_photo"
+                        app:layout_constraintTop_toTopOf="parent"
+
+                        />
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="@dimen/activity_horizontal_margin"
+                        android:text="@string/location_access_description"
+                        android:textColor="@color/per_sub_des"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toStartOf="@+id/switch_photo"
+                        app:layout_constraintStart_toEndOf="@+id/lav_photo"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_photo_heading" />
+
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switch_photo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</ScrollView>
