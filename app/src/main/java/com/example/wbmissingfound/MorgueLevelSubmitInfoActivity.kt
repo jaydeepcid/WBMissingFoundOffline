@@ -5202,6 +5202,7 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
                         LayoutInflater.from(this).inflate(R.layout.custom_imageview_layout, null)
                     val img_main = inflater.findViewById<ImageView>(R.id.img_photo)
                     val img_close = inflater.findViewById<ImageButton>(R.id.btn_close)
+
                     img_main.setImageURI(Uri.parse(uri))
 
                     Log.e("SANKHA", imagePath.toString())

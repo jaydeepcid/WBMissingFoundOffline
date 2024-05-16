@@ -221,9 +221,7 @@ class MainActivity : BaseActivity() {
         }
         callNetworkConnection()
 
-        // DistrictAPICall()
-       // getSHA1Fingerprint(activity)//
-        //callNetworkConnection()
+
 
     }
     private fun setOfflineDataUserWise (){

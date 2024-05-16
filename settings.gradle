@@ -16,4 +16,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "WB Missing Found"
 include ':app'
-include ':opencv2'
+include ':opencvsdk'

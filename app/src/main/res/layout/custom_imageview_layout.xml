@@ -20,4 +20,14 @@
         android:scaleType="centerCrop"
         android:src="@drawable/delete_cross"/>
 
+    <ImageButton
+        android:id="@+id/btn_success"
+        android:visibility="visible"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_gravity="start"
+        android:background="#00000000"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ok_sign"/>
+
 </FrameLayout>
