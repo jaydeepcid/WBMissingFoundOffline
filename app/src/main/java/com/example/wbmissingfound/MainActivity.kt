@@ -216,8 +216,16 @@ class MainActivity : BaseActivity() {
         }
      //   setOfflineDataUserWise()
         binding.mcvOfflineForSyn.setOnClickListener{
+            if(checkForInternet(this)) {
+                setOfflineDataUserWise()
+            }else{
+                Toast.makeText(
+                    this@MainActivity,
+                    "No internet Please try after some time.",
+                    Toast.LENGTH_LONG
+                ).show()
 
-            setOfflineDataUserWise()
+            }
         }
         callNetworkConnection()
 
