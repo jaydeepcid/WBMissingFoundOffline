@@ -176,7 +176,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                            android:text="* UD Case No:"
+                            android:text="UD Case No:"
                             android:textColor="@color/red" />
 
                         <com.google.android.material.textfield.TextInputLayout
@@ -338,7 +338,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                            android:text="* Name of UD Case Officer"
+                            android:text="Name of UD Case Officer"
                             android:textColor="@color/red" />
 
                         <com.google.android.material.textfield.TextInputLayout
@@ -357,7 +357,12 @@
                                 android:layout_height="wrap_content" />
 
                         </com.google.android.material.textfield.TextInputLayout>
-
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                            android:text="Phone number  of UD Case Officer"
+                            android:textColor="@color/red" />
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/til_ud_case_officer_contact_no"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -374,7 +379,7 @@
                                 android:layout_height="wrap_content"
                                 android:ems="10"
                                 android:inputType="phone"
-                                android:maxLength="11" />
+                                android:maxLength="10" />
 
                         </com.google.android.material.textfield.TextInputLayout>
 
@@ -569,7 +574,8 @@
                                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
                                     android:layout_marginTop="@dimen/activity_horizontal_margin"
                                     android:gravity="bottom"
-                                    android:hint="If you want to add more details about the place of occurance(P.O), then please add here" />
+                                    android:textColor="@color/red"
+                                    android:hint="* If you want to add more details about the place of occurance(P.O), then please add here" />
 
                                 <com.google.android.material.textfield.TextInputLayout
                                     android:id="@+id/til_place_where_dead_body_found"

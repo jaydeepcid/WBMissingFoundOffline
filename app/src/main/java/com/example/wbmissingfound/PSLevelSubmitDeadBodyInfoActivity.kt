@@ -146,7 +146,8 @@ class PSLevelSubmitDeadBodyInfoActivity : BaseActivity() , AdapterView.OnItemSel
                 if (s.length==10){
 
                     binding.tietUdCaseOfficerContactNo.setError(null)
-                }else if (s.length<10){
+                }else if (s.length<10
+                    || s.length>10 ){
 
                     binding.tietUdCaseOfficerContactNo.setError(getString(R.string.invalid_phoneno))
                 }
@@ -162,7 +163,7 @@ class PSLevelSubmitDeadBodyInfoActivity : BaseActivity() , AdapterView.OnItemSel
                 if (s.length==10){
 
                     binding.tietUdCaseOfficerContactNo.setError(null)
-                }else if (s.length<10){
+                }else if (s.length<10 || s.length>10){
                     binding.tietUdCaseOfficerContactNo.setError(getString(R.string.invalid_phoneno))
                 }
             }
@@ -202,6 +203,7 @@ class PSLevelSubmitDeadBodyInfoActivity : BaseActivity() , AdapterView.OnItemSel
 
         binding.spinnerOccurrenceDist.onItemSelectedListener = this
         binding.spinnerMorgue!!.onItemSelectedListener=this
+        binding.rbUnidentified.isChecked=true
 
         binding.locationSwitch.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
@@ -316,6 +318,7 @@ class PSLevelSubmitDeadBodyInfoActivity : BaseActivity() , AdapterView.OnItemSel
                             this@PSLevelSubmitDeadBodyInfoActivity,
                             resources.getString(R.string.save_local_stroage)                        )
                         placeofoccurrence.clear()
+                        placeofoccurrenceimages.clear()
                         //binding.btnIdenticalMarks.visibility=View.VISIBLE
                         binding.llIdenticalMarksPic.removeAllViews()
                         clearAllField()
@@ -351,7 +354,8 @@ class PSLevelSubmitDeadBodyInfoActivity : BaseActivity() , AdapterView.OnItemSel
 
       //  val inputString=SharedPreferenceStorage.getValue(applicationContext, "morgueList", "").toString()
 
-
+        val newMorgueDetails = MorgueName("Select Morgue")
+        morgueArrayList.add(0, newMorgueDetails)
         val cursor = db.getmorgueList()
         while (cursor!!.moveToNext()) {
             val mgname=MorgueName(cursor.getString(1))
@@ -385,49 +389,65 @@ class PSLevelSubmitDeadBodyInfoActivity : BaseActivity() , AdapterView.OnItemSel
 
     private fun checkValidation(): Boolean {
         var noError = true
-        if (binding.tietCaseNumber.text.toString().isEmpty()) {
+        /*if (binding.tietCaseNumber.text.toString().isEmpty()) {
             binding.tietCaseNumber.isFocusableInTouchMode = true
             binding.tietCaseNumber.requestFocus()
             showToastMessage("Please provide Case Reference NO")
             noError = false
-        } else if (binding.tvCaseDate.text.toString().isEmpty()) {
+        }*/
+         if (binding.tvCaseDate.text.toString().isEmpty()) {
             binding.tvCaseDate.isFocusableInTouchMode = true
             binding.tvCaseDate.requestFocus()
             showToastMessage("Please provide Case Date")
             noError = false
         }
-        else if (binding.tietUdCaseOfficerName.text.toString().isEmpty()) {
+         else if (binding.tietPlaceWhereDeadBodyFound.text.toString().isEmpty()) {
+             binding.tvCaseDate.isFocusableInTouchMode = true
+             binding.tvCaseDate.requestFocus()
+             showToastMessage("Please provide the place of occurance(P.O)")
+             noError = false
+         }
+         else if (selectedBodyType.equals("00")) {
+
+             var name_vald=binding.tietVictimName.text
+             var age_vald=binding.tietVictimAge.text
+             var address_vald=binding.tietVictimAddress.text
+
+             if(name_vald.isNullOrBlank()){
+                 showToastMessage("Please give Name of Deceased")
+                 noError = false
+                 Log.e("Filed_Status"," Blank")
+             }
+             else if(age_vald.isNullOrBlank()){
+                 showToastMessage("Please give Age of Deceased")
+                 noError = false
+                 Log.e("Filed_Status"," Blank")
+             }
+             else if(address_vald.isNullOrBlank()
+             ){
+                 showToastMessage("Please give  Address of Deceased")
+                 noError = false
+                 Log.e("Filed_Status"," Blank")
+             }
+
+
+         }
+       /* else if (binding.tietUdCaseOfficerName.text.toString().isEmpty()) {
             binding.tvCaseDate.isFocusableInTouchMode = true
             binding.tvCaseDate.requestFocus()
-            showToastMessage("Please provide Case Date")
+            showToastMessage("Please provide UD case officer name")
             noError = false
         }
-        if (selectedBodyType.equals("00")) {
-            var name_vald=binding.tietVictimName.text
-            var age_vald=binding.tietVictimAge.text
-            var address_vald=binding.tietVictimAddress.text
+        else if (binding.tietUdCaseOfficerContactNo.text.toString().isEmpty()) {
+            binding.tvCaseDate.isFocusableInTouchMode = true
+            binding.tvCaseDate.requestFocus()
+            showToastMessage("Please provide UD case officer phone number")
+            noError = false
+        }*/
 
-            if(name_vald.isNullOrBlank()){
-                showToastMessage("Please give Name of Deceased")
-                noError = false
-                Log.e("Filed_Status"," Blank")
-            }
-            else if(age_vald.isNullOrBlank()){
-                showToastMessage("Please give Age of Deceased")
-                noError = false
-                Log.e("Filed_Status"," Blank")
-            }
-            else if(address_vald.isNullOrBlank()
-            ){
-                showToastMessage("Please give  Address of Deceased")
-                noError = false
-                Log.e("Filed_Status"," Blank")
-            }
-
-
-        }else if (selectedBodyType.equals("11")){
-            noError=true
-        }
+//        else if (selectedBodyType.equals("11")){
+//            noError=true
+//        }
 
 
         return noError
@@ -647,6 +667,8 @@ class PSLevelSubmitDeadBodyInfoActivity : BaseActivity() , AdapterView.OnItemSel
     fun SubmitUDPSData() {
         progressDialogCall(this@PSLevelSubmitDeadBodyInfoActivity)
 
+        placeofoccurrenceimages.clear()
+
         try{
             for (i in 0..(placeofoccurrence.size - 1)) {
 
@@ -662,7 +684,7 @@ class PSLevelSubmitDeadBodyInfoActivity : BaseActivity() , AdapterView.OnItemSel
                 placeofoccurrenceimages.add(filePart)
             }
 
-
+       Log.e("Image list size",placeofoccurrence.size.toString())
           //  saveImageNew(imagePath, "IMAGE")
 
             var jwt_token = SharedPreferenceStorage.getValue(

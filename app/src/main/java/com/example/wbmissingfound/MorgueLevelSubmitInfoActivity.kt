@@ -39,6 +39,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.view.get
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import com.example.wbmissingfound.DBHelper.DatabaseDb
@@ -215,7 +216,7 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
 
     lateinit var imagePath: String
     lateinit var imageCategory: String
-
+    var bodyImageUploadedFlag:Boolean = false
 
     var _imageUri: Uri? = null
     private val hairTypes = arrayOf(
@@ -269,6 +270,7 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
     //val checkedItems = BooleanArray(hairTypes.size)
     val selectedItems = mutableListOf(*hairTypes)
     val selectedItemsHairColor = mutableListOf(*hairColors)
+
 
     companion object {
         private const val FIRST_ACTIVITY_REQUEST_CODE = 1
@@ -450,8 +452,6 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
         binding.tilFootware.visibility = View.GONE
 
         accordionView()
-
-
 
         binding.spnAgerange.onItemSelectedListener = this
 
@@ -730,7 +730,8 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
                     }else{
                         showAlertDialogMessage(this@MorgueLevelSubmitInfoActivity,"Please add image.")
                     }
-                }else{
+                }
+                else{
                     if(faceImage.size>1){
                         if (checkForInternet(this@MorgueLevelSubmitInfoActivity)) {
                             SubmitImageFace()
@@ -1091,8 +1092,10 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
                 val hair=getHairTypeList()
                 Log.e("All value",hair)
 
-                binding.tvSelecthair.isClickable=false
-                binding.tvSelecthair.text=hair
+                binding.tvSelecthair.isClickable=true
+                hairTypesAfterSelected.clear()
+                //binding.tvSelecthair.text=hair
+                binding.tvShowhair.text=hair
             }
 
             // handle the negative button of the alert dialog
@@ -1143,8 +1146,10 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
                 val hairColor=getHairColorList()
                 Log.e("All value",hairColor)
 
-                binding.tvSelecthaircolor.isClickable=false
-                binding.tvSelecthaircolor.text=hairColor
+                binding.tvSelecthaircolor.isClickable=true
+                hairColorsAfterSelected.clear()
+               // binding.tvSelecthaircolor.text=hairColor
+                binding.tvShowhaircolor.text=hairColor
             }
 
             // handle the negative button of the alert dialog
@@ -1152,7 +1157,7 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
 
             // handle the neutral button of the dialog to clear the selected items boolean checkedItem
             builder.setNeutralButton("CLEAR ALL") { dialog: DialogInterface?, which: Int ->
-                Arrays.fill(checkedItems, false)
+                Arrays.fill(checkedItemsHairColor, false)
             }
 
             // create the builder
@@ -1169,70 +1174,87 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
         binding.btnSubmit.setOnClickListener {
 
             if (checkForInternet(this@MorgueLevelSubmitInfoActivity)) {
-                //  if (checkValidation())
-                updateMorguecase()
+                if(bodyImageUploadedFlag) {
+                    if (checkValidation())
+                        updateMorguecase()
+                }else{
+                    Toast.makeText(this@MorgueLevelSubmitInfoActivity,"Please add body image",Toast.LENGTH_LONG).show()
+                }
+
             }
             else{
-                receivedData = intent.getStringExtra("CaseId").toString()
-                var ageRange=binding.spnAgerange.selectedItem.toString().trim()
-                val input = ageRange
-                Log.e("AgeReange",input)
+                //Toast.makeText(this@MorgueLevelSubmitInfoActivity,"Please Check Your Internet Connection",Toast.LENGTH_LONG)
+                try{
+                    receivedData = intent.getStringExtra("CaseId").toString()
+                    var ageRange=binding.spnAgerange.selectedItem.toString().trim()
+                    val input = ageRange
+                    Log.e("AgeReange",input)
 
-                //val valString = "80-90"
-                val valString = ageRange
+                    //val valString = "80-90"
+                    val valString = ageRange
 
-                val (firstNumberNew, secondNumberNew) = valString.split("-").map { it.toInt() }
+                    val (firstNumberNew, secondNumberNew) = valString.split("-").map { it.toInt() }
 
-                println("firstNumberNew: $firstNumberNew")
-                println("secondNumberNew: $secondNumberNew")
+                    println("firstNumberNew: $firstNumberNew")
+                    println("secondNumberNew: $secondNumberNew")
 
-                val value= getPeculiartiesInJSONString()
-                val list=value.getString("marks")
-                Log.e("peculist",list)
-                val gson = Gson()
-                val requestBodyJson = gson.toJson(list)
+                    val value= getPeculiartiesInJSONString()
+                    val list=value.getString("marks")
+                    Log.e("peculist",list)
+                    val gson = Gson()
+                    val requestBodyJson = gson.toJson(list)
 
 
-                val hairtype = getHairTypeList()
-                val haircolor = getHairColorList()
+                    val hairtype = getHairTypeList()
+                    val haircolor = getHairColorList()
 
-                val gen = getGender()
-                var db1 = DatabaseDb(this, null)
-                db1.submitDataMorgueLevelOffline(
-                    receivedData,
-                    firstNumberNew,
-                    secondNumberNew,
-                    binding.tvHeight.text.toString().trim(),
-                    gen,
-                    genaraleCondition.toString(),
-                    selectFoorWearText,
-                    selectPriverPart,
-                    selectClostText,
-                    value,
-                    hairtype,
-                    haircolor
-                )
+                    val gen = getGender()
+                    var db1 = DatabaseDb(this, null)
+                    db1.submitDataMorgueLevelOffline(
+                        receivedData,
+                        firstNumberNew,
+                        secondNumberNew,
+                        binding.tvHeight.text.toString().trim(),
+                        gen,
+                        genaraleCondition.toString(),
+                        selectFoorWearText,
+                        selectPriverPart,
+                        selectClostText,
+                        value,
+                        hairtype,
+                        haircolor
+                    )
 
-                val cursor = db1.getMorgueData()
-                var id: Int = 0
-                if (cursor != null) {
-                    if (cursor.moveToLast()) {
-                        //name = cursor.getString(column_index);//to get other values
-                        if (cursor != null) {
-                            id = cursor.getInt(0)
-                            // Log.d("CID WB","ID-->"+id +"CASE NO-->"+   binding.tietCaseNumber.text.toString())
-                        }//to get id, 0 is the column index
+                    val cursor = db1.getMorgueData()
+                    var id: Int = 0
+                    if (cursor != null) {
+                        if (cursor.moveToLast()) {
+                            //name = cursor.getString(column_index);//to get other values
+                            if (cursor != null) {
+                                id = cursor.getInt(0)
+                                // Log.d("CID WB","ID-->"+id +"CASE NO-->"+   binding.tietCaseNumber.text.toString())
+                            }//to get id, 0 is the column index
+                        }
                     }
-                }
-                //saveImageNew(imagePath, "IMAGE",id)
-                //db1.addImageMorgueOffline("asfggdhhdj","23",receivedData)
+                    //saveImageNew(imagePath, "IMAGE",id)
+                    //db1.addImageMorgueOffline("asfggdhhdj","23",receivedData)
 
-                showAlertDialogMessageSuccess(this@MorgueLevelSubmitInfoActivity,
-                    resources.getString(R.string.save_local_stroage)
-                )
-                clearallField()
-                faceImage.clear()
-                bodyImage.clear()
+                    showAlertDialogMessageSuccess(this@MorgueLevelSubmitInfoActivity,
+                        resources.getString(R.string.save_local_stroage)
+                    )
+                    clearallField()
+                    faceImage.clear()
+                    bodyImage.clear()
+
+                }catch (exception: java.lang.Exception){
+                    Toast.makeText(
+                        this@MorgueLevelSubmitInfoActivity,
+                        "Please Check Your Internet Connection ",
+                        Toast.LENGTH_LONG
+                    ).show()
+
+                }
+
             }
 //            }else{
 //                showAlertDialogMessage(this@MorgueLevelSubmitInfoActivity,"Please Give All Information Properly")
@@ -1670,6 +1692,11 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
                                 clearallField()
                                 faceImage.clear()
                                 bodyImage.clear()
+                                pItemImage.clear()
+                                binding.cgPitem.removeAllViews()
+                                binding.llPersonalItemsOfTheBody.removeAllViews()
+                                piselectedLists.clear()
+                                personalItemsArrayList.clear()
                                 showAlertDialogMessageSuccess(
                                     this@MorgueLevelSubmitInfoActivity,
                                     response.body()!!.message.toString()
@@ -2285,11 +2312,11 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
                             Log.e("Message_error", response.body()!!.message.toString())
 
                             if (response.body()?.success == true) {
-                                pItemImage.clear()
-                                binding.cgPitem.removeAllViews()
+                                //pItemImage.clear()
+                               // binding.cgPitem.removeAllViews()
                                 // binding.llPersonalItemsOfTheBody.removeAllViews()
-                                binding.llPersonalItemsOfTheBody.removeAllViews()
-                                piselectedLists.clear()
+                               // binding.llPersonalItemsOfTheBody.removeAllViews()
+                                //piselectedLists.clear()
                                 personalItemsArrayList.clear()
                                 showAlertDialogMessageSuccess(
                                     this@MorgueLevelSubmitInfoActivity,
@@ -2518,9 +2545,10 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
                             Log.e("Message_error", response.body()!!.message.toString())
 
                             if (response.body()?.success == true) {
-                                binding.llPicFace.removeAllViews()
+                               // binding.llPicFace.removeAllViews()
                                 binding.btnPicFaceUoload.visibility=View.GONE
-
+                               // val img_close = inflater.findViewById<ImageButton>(R.id.btn_close)
+                                //img_close.visibility=View.GONE
                                 MessageDialog()
                                 // Clear The form
 
@@ -2629,7 +2657,8 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
                             if (response.body()?.success == true) {
 
                                 binding.btnPicBodyUoload.visibility=View.GONE
-                                binding.llPicBody.removeAllViews()
+                                bodyImageUploadedFlag = true
+                               //binding.llPicBody.removeAllViews()
                                 MessageDialog()
                                 // Clear The form
 
@@ -2852,8 +2881,8 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
 
                             if (response.body()?.success == true) {
                                 wApparelsImage.clear()
-
-                                binding.llPicWa.removeAllViews()
+                                binding.btnPicClothUpload.visibility=View.GONE
+                               // binding.llPicWa.removeAllViews()
                                 MessageDialog()
                                 // Clear The form
 
@@ -2965,7 +2994,7 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
                             if (response.body()?.success == true) {
                                 footwareApparelsImage.clear()
                                 binding.btnPicFootwearUpload.visibility=View.GONE
-                                binding.llFootwarePic.removeAllViews()
+                              //  binding.llFootwarePic.removeAllViews()
                                 MessageDialog()
                                 // Clear The form
 
@@ -3077,7 +3106,7 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
                             if (response.body()?.success == true) {
                                 othersImage.clear()
                                 binding.btnPicOthersUpload.visibility=View.GONE
-                                binding.llPicOthers.removeAllViews()
+                              //  binding.llPicOthers.removeAllViews()
                                 MessageDialog()
                                 // Clear The form
 
@@ -3369,9 +3398,9 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
                             Log.e("Message_error",
                                 response.body()!!.message.toString())
                             if (response.body()?.success == true) {
-                                SpecialMarksImage.clear()
+                               // SpecialMarksImage.clear()
                                 // binding.llSpcIdenMarks.removeAllViews()
-                                binding.llSpcIdenMarks.removeAllViews()
+                               // binding.llSpcIdenMarks.removeAllViews()
                                 showAlertDialogMessageSuccess(
                                     this@MorgueLevelSubmitInfoActivity,
                                     response.body()!!.message.toString()
@@ -3642,7 +3671,7 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
         // Create an alert builder
         lateinit var dialog: AlertDialog
         val builder = AlertDialog.Builder(this)
-        builder.setCancelable(false)
+        //builder.setCancelable(false)
         // set the custom layout
         val customLayout: View =
             layoutInflater.inflate(R.layout.custom_personal_items_alert_dialoglayout, null)
@@ -3997,11 +4026,6 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
         burnTypeMarksAfterSelected1.add(selectedBurnmarkstype11)
 
 
-
-
-
-
-
         val adapterLoc = ArrayAdapter(
             this,
             R.layout.spinner_item, values2
@@ -4036,11 +4060,11 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
         btn_spc_add.setOnClickListener()
         {
 
-            if (spn_select_spec_type.selectedItemPosition == 0) {
+           /* if (spn_select_spec_type.selectedItemPosition == 0) {
                 showToastMessage("PLease select Specific Type")
             } else if (spn_select_spec_location.selectedItemPosition == 0) {
                 showToastMessage("PLease select Specific Location")
-            } else if (SpecialMarksImage.size == 0) {
+            } else*/ if (SpecialMarksImage.size == 0) {
                 showToastMessage("PLease Add Picture")
             } else {
                 binding.cgSpcIden.removeAllViews()
@@ -5392,7 +5416,7 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
         // Create an alert builder
         lateinit var dialog: AlertDialog
         val builder = AlertDialog.Builder(this)
-        builder.setCancelable(false)
+       // builder.setCancelable(false)
         // set the custom layout
         val customLayout: View =
             layoutInflater.inflate(R.layout.custom_height_seek_alert_layout, null)
@@ -5456,9 +5480,10 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
         submitButton.setOnClickListener()
         {
 
-            if (tv_progress_feet.text.isEmpty() || tv_progress_inch.text.isEmpty()) {
-                showToastMessage("Invalid")
-            } else if (tv_progress_feet.text.toString().toInt() == 0) {
+//            if (tv_progress_feet.text.isEmpty() || tv_progress_inch.text.isEmpty()) {
+//                showToastMessage("Invalid")
+//            } else
+                if (tv_progress_feet.text.toString().toInt() == 0) {
                 showToastMessage("Invalid height")
             } else {
 

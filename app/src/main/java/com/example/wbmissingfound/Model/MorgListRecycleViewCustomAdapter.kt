@@ -49,17 +49,17 @@ class MorgListRecycleViewCustomAdapter(var  context: Context,private val mList: 
 //        val date = LocalDate.parse(ItemsViewModel.ud_date, inputFormatter)
 //        val formattedDate = outputFormatter.format(date)
 
-        val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+       /* val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
         val outputFormat = SimpleDateFormat("dd/MM/yyyy ")
         val date: Date = inputFormat.parse(ItemsViewModel.ud_date)
         val formattedDate = outputFormat.format(date)
         Log.e("date",formattedDate)
-
+*/
 
         // sets the text to the textview from our itemHolder class
         holder.textViewCaseNo.text = ItemsViewModel.ud_number
         holder.textViewPsname.text=ItemsViewModel.ps_name
-        holder.textViewCaseDate.text=formattedDate
+        holder.textViewCaseDate.text=ItemsViewModel.ud_date
         holder.textViewOfficerName.text=ItemsViewModel.ud_officer
         holder.textViewOfficerContact.text=ItemsViewModel.udofficer_phone
         holder.textViewPlace.text=ItemsViewModel.place

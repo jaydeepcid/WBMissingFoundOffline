@@ -65,7 +65,7 @@ class MainActivity : BaseActivity() {
 
     val PREF_NAME = "LOGINPREFSHARE"
 
-    val version = BuildConfig.VERSION_CODE
+    val version = BuildConfig.VERSION_NAME
 
     var jwt_token: String = ""
 
@@ -205,7 +205,7 @@ class MainActivity : BaseActivity() {
             startActivity(intent)
         }
 
-        binding.tvVersion.text = "Version " + version + "\n © Curated by CID West Bengal"
+        binding.tvVersion.text = "Version:" + version + "\n © Developed by CID West Bengal"
 
         if (checkForInternet(this)) {
             logInValidityCheck()

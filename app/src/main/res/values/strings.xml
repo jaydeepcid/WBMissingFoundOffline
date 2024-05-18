@@ -120,13 +120,13 @@
     <string name="uploading_photograph_of_wearing_apparels">Photograph of Wearing Apparels</string>
     <string name="uploading_photograph_of_others">Other Photographs \n(Inquest reports/PM reports or any other relevant documents/Any other relevant photographs)</string>
     <string name="special_identification_marks_heading">Special Identification Marks</string>
-    <string name="peculiarities">Peculiarities</string>
+    <string name="peculiarities">Pecularities</string>
     <string name="name_victim">Name of Deceased</string>
     <string name="age_victim">Age of Deceased</string>
     <string name="address_victim">Address of Deceased</string>
-    <string name="pesonal_items">Pesonal Items</string>
+    <string name="pesonal_items">Personal Items</string>
     <string name="detail_of_items">Detail of Items</string>
-    <string name="acknowledged">© Curated by CID WestBengal Modified</string>
+    <string name="acknowledged">© Developed by CID West Bengal </string>
     <string name="take_photo">Take Photo</string>
     <string name="search">Search</string>
     <string name="internal_storage">Internal Storage</string>

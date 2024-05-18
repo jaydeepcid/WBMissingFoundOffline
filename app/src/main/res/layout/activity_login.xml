@@ -153,15 +153,31 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.3" />
-
-        <TextView
-            android:id="@+id/tv_credit"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:gravity="center_horizontal"
-            android:textColor="@color/text_blue"
-            android:text="@string/acknowledged"/>
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true">
+            <TextView
+                android:id="@+id/tv_credit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:gravity="center_horizontal"
+                android:textColor="@color/text_blue"
+                android:text="@string/acknowledged"/>
+
+            <TextView
+                android:id="@+id/tv_version"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:gravity="center_horizontal"
+                android:text="Version"
+                android:textColor="@color/text_blue"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+        </LinearLayout>
 
 
     </RelativeLayout>

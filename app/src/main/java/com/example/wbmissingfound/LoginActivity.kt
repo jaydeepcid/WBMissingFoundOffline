@@ -26,6 +26,8 @@ class LoginActivity : BaseActivity() {
 
     private val activity = this@LoginActivity
 
+    val version = BuildConfig.VERSION_NAME
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +38,8 @@ class LoginActivity : BaseActivity() {
 
         Log.e("version_name...",AppInfoHelper.getInfo(baseContext, AppInfoHelper.VERSION_NAME))
         Log.e("version_Code...",AppInfoHelper.getInfo(baseContext, AppInfoHelper.VERSION_CODE))
-        getLatestApk()
+       // getLatestApk()
+        binding.tvVersion.text = "Version:" + version
 
         if (SharedPreferenceStorage.getValue(
                 applicationContext,
@@ -169,7 +172,7 @@ class LoginActivity : BaseActivity() {
          binding.tiePassword.setText("missing@123")
     }
 
-    private fun getLatestApk() {
+   /* private fun getLatestApk() {
         var mAPIService: APIService? = null
         //  progressDialogCall(this@MainActivity)
         mAPIService = ApiUtils.apiService
@@ -278,7 +281,7 @@ class LoginActivity : BaseActivity() {
                 showAlertDialogMessage(this@LoginActivity, "SERVER ERROR")
             }
         })
-    }
+    }*/
 
     fun callForLogout() {
         SharedPreferenceStorage.setValue(

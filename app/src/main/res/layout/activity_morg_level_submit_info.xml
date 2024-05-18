@@ -297,7 +297,7 @@
                             android:layout_marginTop="@dimen/activity_horizontal_margin"
                             android:layout_marginEnd="10dp"
                             android:layout_marginBottom="12dp"
-                            android:text="Male Private Part Circumcised"
+                            android:text="Private Part Circumcised"
                             android:textStyle="bold" />
 
                         <RadioGroup
@@ -1030,7 +1030,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="@dimen/activity_horizontal_margin"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     app:cardCornerRadius="10dp"
                     app:cardPreventCornerOverlap="true">
 
@@ -1242,7 +1242,7 @@
                                     android:layout_marginTop="10dp"
                                     android:layout_marginRight="@dimen/activity_horizontal_margin"
                                     android:padding="10dp"
-                                    android:text="Peculiarities List::"
+                                    android:text="Pecularities List::"
                                     android:textSize="16sp"
                                     android:textStyle="bold" />
 
