@@ -1202,7 +1202,7 @@ class MainActivity : BaseActivity() {
                                         }*/
                                         val  morgueArrayList1 = response.body()!!.data
                                         // Log.d("M SIZE",morgueArrayList1.toString())
-
+                                        db1.addMorgue("0","Select Morgue")
                                         for (j in morgueArrayList1) {
                                             val id = j.id.toString()
                                             val mname = j.name.toString()

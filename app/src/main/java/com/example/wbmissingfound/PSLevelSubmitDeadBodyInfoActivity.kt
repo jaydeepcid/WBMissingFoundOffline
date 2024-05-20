@@ -354,8 +354,8 @@ class PSLevelSubmitDeadBodyInfoActivity : BaseActivity() , AdapterView.OnItemSel
 
       //  val inputString=SharedPreferenceStorage.getValue(applicationContext, "morgueList", "").toString()
 
-        val newMorgueDetails = MorgueName("Select Morgue")
-        morgueArrayList.add(0, newMorgueDetails)
+       /* val newMorgueDetails = MorgueName("Select Morgue")
+        morgueArrayList.add(0, newMorgueDetails)*/
         val cursor = db.getmorgueList()
         while (cursor!!.moveToNext()) {
             val mgname=MorgueName(cursor.getString(1))
@@ -684,7 +684,8 @@ class PSLevelSubmitDeadBodyInfoActivity : BaseActivity() , AdapterView.OnItemSel
                 placeofoccurrenceimages.add(filePart)
             }
 
-       Log.e("Image list size",placeofoccurrence.size.toString())
+            Log.e("Image list size",placeofoccurrence.size.toString())
+            Log.e("Image list ",placeofoccurrence.toString())
           //  saveImageNew(imagePath, "IMAGE")
 
             var jwt_token = SharedPreferenceStorage.getValue(
@@ -755,6 +756,7 @@ class PSLevelSubmitDeadBodyInfoActivity : BaseActivity() , AdapterView.OnItemSel
                     "      vicAge : "+vic_age+
                     "      vicGender : "+vic_gender+
                     "      vicddress : "+vic_address)
+
             val call = mAPIService.caseDatailsPSLevel(
                 jwt_token,
                 psIds,

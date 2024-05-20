@@ -188,7 +188,7 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
     var height_inch: String? = null
     lateinit var selectClostText :String
     lateinit var selectFoorWearText :String
-    lateinit var selectPriverPart :String
+     var selectPriverPart :String =""
     lateinit var genaraleCondition :String
     var age_from: String? = null
     var age_to: String? = null
@@ -864,7 +864,7 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
                     }
                 }
                 else{
-                    if(bodyImage.size>2){
+                    if(bodyImage.size>1){
                         if (checkForInternet(this@MorgueLevelSubmitInfoActivity)) {
                             SubmitImageBody()
                         }else{
@@ -1602,6 +1602,7 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
 
     @SuppressLint("SuspiciousIndentation")
     fun updateMorguecase() {
+
         progressDialogCall(this@MorgueLevelSubmitInfoActivity)
 
         // if (checkForInternet(this@PSLevelSubmitDeadBodyInfoActivity)) {
@@ -1635,6 +1636,7 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
 
         val input = ageRange
         Log.e("AgeReange",input)
+
 
         //val valString = "80-90"
         val valString = ageRange
@@ -1697,11 +1699,28 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
                                 binding.llPersonalItemsOfTheBody.removeAllViews()
                                 piselectedLists.clear()
                                 personalItemsArrayList.clear()
-                                showAlertDialogMessageSuccess(
+                               /* showAlertDialogMessageSuccess(
                                     this@MorgueLevelSubmitInfoActivity,
                                     response.body()!!.message.toString()
-                                )
-                                loadMorgeListPageActivity()
+                                )*/
+                                    var alertDialog: androidx.appcompat.app.AlertDialog? = this@MorgueLevelSubmitInfoActivity.let {
+                                    val appName = getString(R.string.app_name)
+                                    var builder = androidx.appcompat.app.AlertDialog.Builder(it)
+                                    builder.setTitle(appName)
+                                    builder.setCancelable(false)
+                                    builder.setIcon(R.drawable.ok_sign)
+                                    builder.setMessage(response.body()!!.message.toString())
+                                    builder.apply {
+                                        setPositiveButton("OK",
+                                            {dialog, id ->
+                                                loadMorgeListPageActivity()
+                                        })
+
+                                    }
+                                    builder.create()
+                                }
+                                alertDialog?.show()
+
                                 // Clear The form
 
                                 //Clear the form
@@ -5627,18 +5646,27 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
                 showToastMessage("Please select Gender")
                 noError = false
             }
-            else if (faceImage.size < 3) {
+            /*else if (faceImage.size < 3) {
                 binding.llPicFace.isFocusableInTouchMode = true
                 binding.llPicFace.requestFocus()
                 showToastMessage("Please choose Front, Left and right side of face photo ")
                 noError = false
-            }
+            }*/
             else if (bodyImage.size < 2) {
                 binding.llPicBody.isFocusableInTouchMode = true
                 binding.llPicBody.requestFocus()
                 showToastMessage("Please choose Front and Back side photo")
                 noError = false
             }
+
+
+
+        }
+        else if(AgeRange == 0) {
+            binding.spnAgerange.isFocusableInTouchMode = true
+            binding.spnAgerange.requestFocus()
+            showToastMessage("Please select approx age range of dead body")
+            noError = false
         }
 //        else if(binding.spnAgerange.selectedItem.toString().trim().equals("Select")){
 //             binding.spnAgerange.isFocusableInTouchMode = true

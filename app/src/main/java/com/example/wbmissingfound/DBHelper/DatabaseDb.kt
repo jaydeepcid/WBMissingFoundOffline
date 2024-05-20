@@ -399,7 +399,7 @@ class DatabaseDb(context: Context, factory: SQLiteDatabase.CursorFactory?) :
     }
     fun getmorgueIdbyName(name:String) : Cursor? {
         val db = this.readableDatabase
-        return db.rawQuery("SELECT * FROM morguelist where morgue_name='" + name+"'", null)
+        return db.rawQuery("SELECT morgue_id FROM morguelist where morgue_name='" + name+"'", null)
     }
 
     fun CheckIsDataAlreadyInDBorNot(): Boolean {
