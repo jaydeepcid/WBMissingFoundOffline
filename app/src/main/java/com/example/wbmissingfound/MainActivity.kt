@@ -47,6 +47,7 @@ import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
+import org.json.JSONObject
 import org.opencv.android.OpenCVLoader
 import retrofit2.Call
 import retrofit2.Callback
@@ -1004,38 +1005,33 @@ class MainActivity : BaseActivity() {
             peculiarities.toString().toRequestBody("text/plain".toMediaTypeOrNull()),
             hair.toString().toRequestBody("text/plain".toMediaTypeOrNull()),
             haircolor.toRequestBody("text/plain".toMediaTypeOrNull())
-        ).enqueue(object : Callback<CaseDetails> {
+        ).enqueue(object : Callback<String> {
             override fun onResponse(
-                call: Call<CaseDetails>, response: Response<CaseDetails>
+                call: Call<String>, response: Response<String>
             ) {
                 if (response.code() == 200) {
                    // closeProgressDialogCall()
                     try {
                         if (response.isSuccessful) {
-                            Log.e("Message_error", response.body()!!.message.toString())
 
-                            if (response.body()?.success == true) {
-                                  db1.deleteRowByCaseIdMorgeData(case_id)
+                           var result: JSONObject? = null
 
-//                                showAlertDialogMessageSuccess(
-//                                    this@MorgueLevelSubmitInfoActivity,
-//                                    response.body()!!.message.toString()
-//                                )
-                                // loadMorgeListPageActivity()
-                                // Clear The form
+                            val s = response.body()
 
-                                //Clear the form
+                            result = JSONObject(s)
+
+                            Log.e("response", "done")
+
+                            if (result!!.optString("success").equals("true"))  {
+                                db1.deleteRowByCaseIdMorgeData(case_id)
+
                             } else {
                                 showAlertDialogMessage(
                                     this@MainActivity,
-                                    response.body()!!.message.toString()
+                                    result!!.optString("message").toString()
                                 )
-//                                    showAlertDialogMessage(
-////                                        this@PSLevelSubmitDeadBodyInfoActivity,
-////                                        "SERVER ERROR !!!"
-////                                    )
-                            }
 
+                            }
 
                         }
                     } catch (exception: java.lang.Exception) {
@@ -1068,7 +1064,7 @@ class MainActivity : BaseActivity() {
                 }
             }
 
-            override fun onFailure(call: Call<CaseDetails>, t: Throwable) {
+            override fun onFailure(call: Call<String>, t: Throwable) {
                 //closeProgressDialogCall()
                 showAlertDialogMessage(
                     this@MainActivity,

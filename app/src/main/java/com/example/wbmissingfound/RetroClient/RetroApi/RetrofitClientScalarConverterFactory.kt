@@ -1,6 +1,5 @@
 package com.example.wbmissingfound.RetroClient.RetroApi
 
-import com.example.wbmissingfound.custom.DateStringConverterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -8,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.util.concurrent.TimeUnit
 
-object RetrofitClient {
+object RetrofitClientScalarConverterFactory {
     var retrofit: Retrofit? = null
 
     fun getClient(baseUrl: String): Retrofit? {
@@ -25,9 +24,8 @@ object RetrofitClient {
             retrofit = Retrofit.Builder()
                 .client(client)
                 .baseUrl(baseUrl)
-               .addConverterFactory(GsonConverterFactory.create())
-               //.addConverterFactory(ScalarsConverterFactory.create())
-                .addConverterFactory(DateStringConverterFactory(GsonConverterFactory.create()))
+               // .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(ScalarsConverterFactory.create())
                 .build()
         }
 

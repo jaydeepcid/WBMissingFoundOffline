@@ -53,6 +53,7 @@ import com.example.wbmissingfound.Model.SyncImageModelClass
 import com.example.wbmissingfound.Model.SyncPersonalItemMorgueLevel
 import com.example.wbmissingfound.RetroClient.RetroApi.APIService
 import com.example.wbmissingfound.RetroClient.RetroApi.ApiUtils
+import com.example.wbmissingfound.RetroClient.RetroApi.ApiUtilsScalarConverterFactory
 import com.example.wbmissingfound.RetroClient.RetroModel.BurnMarksModel
 import com.example.wbmissingfound.RetroClient.RetroModel.CaseDetails
 import com.example.wbmissingfound.RetroClient.RetroModel.DistrictAll
@@ -1174,12 +1175,15 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
         binding.btnSubmit.setOnClickListener {
 
             if (checkForInternet(this@MorgueLevelSubmitInfoActivity)) {
-                if(bodyImageUploadedFlag) {
+
+                if (checkValidation())
+                    updateMorguecase()
+              /*  if(bodyImageUploadedFlag) {
                     if (checkValidation())
                         updateMorguecase()
                 }else{
                     Toast.makeText(this@MorgueLevelSubmitInfoActivity,"Please add body image",Toast.LENGTH_LONG).show()
-                }
+                }*/
 
             }
             else{
@@ -1631,9 +1635,9 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
         val list=value.getString("marks")
         Log.e("peculist",list)
         val gson = Gson()
-        val requestBodyJson = gson.toJson(list).toRequestBody("text/plain".toMediaTypeOrNull())
+        val requestBodyJson = list.toRequestBody("text/plain".toMediaTypeOrNull())
 
-
+        Log.e("peculist json", requestBodyJson.toString())
         val input = ageRange
         Log.e("AgeReange",input)
 
@@ -1663,7 +1667,7 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
 
 
         var mAPIService: APIService? = null
-        mAPIService = ApiUtils.apiService
+        mAPIService = ApiUtilsScalarConverterFactory.apiService
 
         val call = mAPIService.updateCaseMorgue(
             jwt_token,
@@ -1679,17 +1683,22 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
             requestBodyJson,
             hairtype.toString().toRequestBody("text/plain".toMediaTypeOrNull()),
             haircolor.toRequestBody("text/plain".toMediaTypeOrNull())
-        ).enqueue(object : Callback<CaseDetails> {
+        ).enqueue(object : Callback<String> {
             override fun onResponse(
-                call: Call<CaseDetails>, response: Response<CaseDetails>
+                call: Call<String>, response: Response<String>
             ) {
                 if (response.code() == 200) {
                     closeProgressDialogCall()
                     try {
                         if (response.isSuccessful) {
-                            Log.e("Message_error", response.body()!!.message.toString())
+                            Log.e("Morgue Submit", response.body()!!)
+                            var result: JSONObject? = null
 
-                            if (response.body()?.success == true) {
+                            val s = response.body()
+
+                            result = JSONObject(s)
+                            Log.e("Morgue Submit", result.toString())
+                            if (result!!.optString("success").equals("true")) {
 
                                 clearallField()
                                 faceImage.clear()
@@ -1699,17 +1708,17 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
                                 binding.llPersonalItemsOfTheBody.removeAllViews()
                                 piselectedLists.clear()
                                 personalItemsArrayList.clear()
-                               /* showAlertDialogMessageSuccess(
+                                showAlertDialogMessageSuccess(
                                     this@MorgueLevelSubmitInfoActivity,
-                                    response.body()!!.message.toString()
-                                )*/
+                                    result!!.optString("message").toString()
+                                )
                                     var alertDialog: androidx.appcompat.app.AlertDialog? = this@MorgueLevelSubmitInfoActivity.let {
                                     val appName = getString(R.string.app_name)
                                     var builder = androidx.appcompat.app.AlertDialog.Builder(it)
                                     builder.setTitle(appName)
                                     builder.setCancelable(false)
                                     builder.setIcon(R.drawable.ok_sign)
-                                    builder.setMessage(response.body()!!.message.toString())
+                                    builder.setMessage(result!!.optString("message").toString())
                                     builder.apply {
                                         setPositiveButton("OK",
                                             {dialog, id ->
@@ -1727,7 +1736,7 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
                             } else {
                                 showAlertDialogMessage(
                                     this@MorgueLevelSubmitInfoActivity,
-                                    response.body()!!.message.toString()
+                                    result!!.optString("message").toString()
                                 )
 //                                    showAlertDialogMessage(
 ////                                        this@PSLevelSubmitDeadBodyInfoActivity,
@@ -1767,7 +1776,7 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
                 }
             }
 
-            override fun onFailure(call: Call<CaseDetails>, t: Throwable) {
+            override fun onFailure(call: Call<String>, t: Throwable) {
                 closeProgressDialogCall()
                 showAlertDialogMessage(
                     this@MorgueLevelSubmitInfoActivity,
@@ -1807,31 +1816,38 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
             peculiarities.toString().toRequestBody("text/plain".toMediaTypeOrNull()),
             hair.toString().toRequestBody("text/plain".toMediaTypeOrNull()),
             haircolor.toRequestBody("text/plain".toMediaTypeOrNull())
-        ).enqueue(object : Callback<CaseDetails> {
+        ).enqueue(object : Callback<String> {
             override fun onResponse(
-                call: Call<CaseDetails>, response: Response<CaseDetails>
+                call: Call<String>, response: Response<String>
             ) {
                 if (response.code() == 200) {
                     closeProgressDialogCall()
                     try {
                         if (response.isSuccessful) {
-                            Log.e("Message_error", response.body()!!.message.toString())
+                            Log.e("Message_error", response.body()!!)
+                            var result: JSONObject? = null
 
-                            if (response.body()?.success == true) {
+                            val s = response.body()
+
+                            result = JSONObject(s)
+
+                            Log.e("response", "done")
+
+                            if (result!!.optString("success").equals("true"))  {
                                 val db = DatabaseDb(this@MorgueLevelSubmitInfoActivity, null)
                                 db.deleteRowByCaseIdMorgeData(case_id)
 //                                showAlertDialogMessageSuccess(
 //                                    this@MorgueLevelSubmitInfoActivity,
 //                                    response.body()!!.message.toString()
 //                                )
-                                // loadMorgeListPageActivity()
+                                 loadMorgeListPageActivity()
                                 // Clear The form
 
                                 //Clear the form
                             } else {
                                 showAlertDialogMessage(
                                     this@MorgueLevelSubmitInfoActivity,
-                                    response.body()!!.message.toString()
+                                    result!!.optString("message").toString()
                                 )
 //                                    showAlertDialogMessage(
 ////                                        this@PSLevelSubmitDeadBodyInfoActivity,
@@ -1871,7 +1887,7 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
                 }
             }
 
-            override fun onFailure(call: Call<CaseDetails>, t: Throwable) {
+            override fun onFailure(call: Call<String>, t: Throwable) {
                 closeProgressDialogCall()
                 showAlertDialogMessage(
                     this@MorgueLevelSubmitInfoActivity,

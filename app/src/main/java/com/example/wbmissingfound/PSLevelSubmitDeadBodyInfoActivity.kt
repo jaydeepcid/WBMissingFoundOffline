@@ -2,8 +2,9 @@ package com.example.wbmissingfound
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.app.AlertDialog
-import android.content.Context
+import android.app.Dialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -11,13 +12,16 @@ import android.graphics.BitmapFactory
 import android.location.Location
 import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.Window
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.CompoundButton
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -32,16 +36,15 @@ import com.example.wbmissingfound.DBHelper.DatabaseDb
 import com.example.wbmissingfound.Model.MorgueName
 import com.example.wbmissingfound.RetroClient.RetroApi.APIService
 import com.example.wbmissingfound.RetroClient.RetroApi.ApiUtils
-import com.example.wbmissingfound.RetroClient.RetroModel.AllPsResponseModelClass
 import com.example.wbmissingfound.RetroClient.RetroModel.CaseDetails
 import com.example.wbmissingfound.RetroClient.RetroModel.DistrictAllPS
 import com.example.wbmissingfound.RetroClient.RetroModel.MorgueDetails
-import com.example.wbmissingfound.RetroClient.RetroModel.MorgueListApiModelClass
 import com.example.wbmissingfound.RetroClient.RetroModel.PSAllOnly
 import com.example.wbmissingfound.custom.DatePicker
 import com.example.wbmissingfound.databinding.ActivityPslevelSubmitDeadBodyInfoBinding
 import com.example.wbmissingfound.sharedStorage.SharedPreferenceStorage
 import com.example.wbmissingfound.utils.FileUtils
+import com.google.android.datatransport.runtime.scheduling.SchedulingConfigModule_ConfigFactory.config
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -61,11 +64,6 @@ import java.io.FileDescriptor
 import java.io.FileOutputStream
 import java.io.IOException
 import java.text.DecimalFormat
-
-import kotlin.collections.ArrayList
-import kotlin.collections.HashMap
-import kotlin.collections.List
-import kotlin.collections.MutableList
 
 
 class PSLevelSubmitDeadBodyInfoActivity : BaseActivity() , AdapterView.OnItemSelectedListener  {
@@ -113,11 +111,16 @@ class PSLevelSubmitDeadBodyInfoActivity : BaseActivity() , AdapterView.OnItemSel
 
 
     companion object {
+        //image pick code
+        private val IMAGE_PICK_CODE = 1000
+        //Permission code
+        private val PERMISSION_CODE = 1001
         private const val FIRST_ACTIVITY_REQUEST_CODE = 1
         private const val SECOND_ACTIVITY_REQUEST_CODE = 2
         const val PATH = "path"
         const val TYPE = "type"
     }
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -225,12 +228,16 @@ class PSLevelSubmitDeadBodyInfoActivity : BaseActivity() , AdapterView.OnItemSel
                         1080, 1080
                     )
                     .start(IMAGE_REQUEST_IDENTICAL_MARKS)*/
-                bannerText = "Please Capture Photo of Place Of Occurrence"
+                selectPicDialog()
+              /*  bannerText = "Please Capture Photo of Place Of Occurrence"
                 val type = "IDENTIMARKS"
+
                 openPostActivity.launch(
                     CameraXActivity.getIntent(this, 1, type, bannerText)
-//                    CameraProcessActivity.getIntent(this, 1, type, bannerText)
-                )
+                 //CameraProcessActivity.getIntent(this, 1, type, bannerText)
+                )*/
+
+
             }
         }
         binding.rgDeadbodytype!!.setOnCheckedChangeListener { group, checkedId ->
@@ -1044,8 +1051,103 @@ class PSLevelSubmitDeadBodyInfoActivity : BaseActivity() , AdapterView.OnItemSel
     override fun onNothingSelected(parent: AdapterView<*>?) {
         TODO("Not yet implemented")
     }
+    private fun selectPicDialog() {
+        val dialog = Dialog(this@PSLevelSubmitDeadBodyInfoActivity)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(false)
+        dialog.setContentView(R.layout.custom_select_pic_dialog)
 
+        val camera = dialog.findViewById(R.id.image_view_camera) as ImageView
+        val gallery = dialog.findViewById(R.id.image_view_gallery) as ImageView
 
+       camera.setOnClickListener{
+           bannerText = "Please Capture Photo of Place Of Occurrence"
+           val type = "IDENTIMARKS"
+
+           openPostActivity.launch(
+               CameraXActivity.getIntent(this, 1, type, bannerText)
+//                    CameraProcessActivity.getIntent(this, 1, type, bannerText)
+           )
+
+       }
+        gallery.setOnClickListener{
+            pickImageFromGallery()
+
+        }
+
+        val noBtn = dialog.findViewById(R.id.btn_close) as Button
+        noBtn.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
+    }
+    private fun pickImageFromGallery() {
+        //Intent to pick image
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        startActivityForResult(intent, IMAGE_PICK_CODE)
+    }
+
+    /*  fun openGallery() {
+          var mediaId = ""
+          val projection = arrayOf(
+              MediaStore.Images.Media._ID,
+              MediaStore.Images.Media.DISPLAY_NAME
+          )
+          val cursor = contentResolver.query(
+              MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+              projection, null, null, null
+          )
+          if (cursor != null) {
+              while (cursor.moveToNext()) {
+                  val name =
+                      cursor.getString(cursor.getColumnIndex(MediaStore.Images.ImageColumns.DISPLAY_NAME))
+                  if (name == config.getLatestMediaFile().getName()) {
+                      mediaId =
+                          cursor.getString(cursor.getColumnIndex(MediaStore.Images.ImageColumns._ID))
+                      break
+                  }
+              }
+              cursor.close()
+          }
+          var mediaUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+          if (mediaId != "") {
+              mediaUri = mediaUri.buildUpon()
+                  .authority("media")
+                  .appendPath(mediaId)
+                  .build()
+          }
+          Log.d("TagInfo", "Uri:  $mediaUri")
+          val intent = Intent(Intent.ACTION_VIEW, mediaUri)
+          startActivity(intent)
+      }*/
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE){
+            binding.llPsLevelImageview!!.visibility = View.VISIBLE
+            val uri = data!!.data
+            if (uri != null) {
+                imagePath = uri.toString()
+            }
+            val inflater =
+                LayoutInflater.from(this).inflate(R.layout.custom_imageview_layout, null)
+            val img_main = inflater.findViewById<ImageView>(R.id.img_photo)
+            val img_close = inflater.findViewById<ImageButton>(R.id.btn_close)
+            img_main.setImageURI(Uri.parse(uri.toString()))
+            //imagePath = imagePath.replace("%2F", " ")
+            placeofoccurrence.add(imagePath)
+            Log.e("UDCASE after removal", imagePath)
+            binding.llIdenticalMarksPic.addView(inflater)
+            img_close.setOnClickListener {
+                placeofoccurrence.remove(imagePath)
+                imagePath = ""
+                //binding.btnIdenticalMarks.visibility=View.VISIBLE
+                binding.llIdenticalMarksPic.removeView(inflater)
+                //(binding.llIdenticalMarksPic.parent as ViewGroup).removeView(binding.llIdenticalMarksPic)
+            }
+        }
+    }
 
 
 }

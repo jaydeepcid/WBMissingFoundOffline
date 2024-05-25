@@ -217,7 +217,7 @@ interface APIService {
         @Part("haircolor") haircolor: RequestBody,
 
 
-    ): Call<CaseDetails>//UDDataSubmitApiResponse
+    ): Call<String>//UDDataSubmitApiResponse
 
     @POST("getCaseSubByPs")
     fun getCaseSubByPs(
