@@ -1176,14 +1176,14 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
 
             if (checkForInternet(this@MorgueLevelSubmitInfoActivity)) {
 
-                if (checkValidation())
-                    updateMorguecase()
-              /*  if(bodyImageUploadedFlag) {
+                /*if (checkValidation())
+                    updateMorguecase()*/
+                if(bodyImageUploadedFlag) {
                     if (checkValidation())
                         updateMorguecase()
                 }else{
                     Toast.makeText(this@MorgueLevelSubmitInfoActivity,"Please add body image",Toast.LENGTH_LONG).show()
-                }*/
+                }
 
             }
             else{
@@ -4181,8 +4181,7 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
 
         val spn_select_pecu_one = customLayout.findViewById<Spinner>(R.id.spinner_select_pecuone)
         val spn_select_pecu_two = customLayout.findViewById<Spinner>(R.id.spinner_select_pecutwo)
-        val spn_select_pecu_three =
-            customLayout.findViewById<Spinner>(R.id.spinner_select_pecuthree)
+        val spn_select_pecu_three = customLayout.findViewById<Spinner>(R.id.spinner_select_pecuthree)
         val spn_select_pecu_four = customLayout.findViewById<Spinner>(R.id.spinner_select_pecufour)
         val btn_pecu_add = customLayout.findViewById<Button>(R.id.btn_pecu_add)
         val btn_pecu_cancel = customLayout.findViewById<Button>(R.id.btn_pecu_cancel)
@@ -4194,7 +4193,7 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
 
         val adapterOne = ArrayAdapter(
             this,
-            R.layout.spinner_item, pecuB
+            R.layout.spinner_item, pecuA
         )
         spn_select_pecu_one.adapter = adapterOne
 
@@ -4204,8 +4203,8 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
                 parent: AdapterView<*>,
                 view: View, position: Int, id: Long
             ) {
-                valB = pecuA.get(position)!!.toString()
-                valBID = spn_select_pecu_one.selectedItemPosition
+                valA = pecuA.get(position)!!.toString()
+                valAID = spn_select_pecu_one.selectedItemPosition
 
             }
 
@@ -4216,7 +4215,7 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
 
         val adapterTwo = ArrayAdapter(
             this,
-            R.layout.spinner_item, pecuC
+            R.layout.spinner_item, pecuB
         )
         spn_select_pecu_two.adapter = adapterTwo
 
@@ -4226,8 +4225,8 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
                 parent: AdapterView<*>,
                 view: View, position: Int, id: Long
             ) {
-                valC = pecuB.get(position)!!.toString()
-                valCID = spn_select_pecu_two.selectedItemPosition
+                valB = pecuB.get(position)!!.toString()
+                valBID = spn_select_pecu_two.selectedItemPosition
 
             }
 
@@ -4238,7 +4237,7 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
 
         val adapterThree = ArrayAdapter(
             this,
-            R.layout.spinner_item, pecuA
+            R.layout.spinner_item, pecuC
         )
         spn_select_pecu_three.adapter = adapterThree
 
@@ -4248,8 +4247,8 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
                 parent: AdapterView<*>,
                 view: View, position: Int, id: Long
             ) {
-                valA = pecuC.get(position)!!.toString()
-                valAID = spn_select_pecu_three.selectedItemPosition
+                valC = pecuC.get(position)!!.toString()
+                valCID = spn_select_pecu_three.selectedItemPosition
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
@@ -4299,12 +4298,12 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
                             pecuLists.add(valA + "-" + valB + "-" + valC + "-" + valD)
                             PecuModelArrayList.add(
                                 PecuMarksModel(
+                                    valAID.toInt(),
+                                    valA,
                                     valBID.toInt(),
                                     valB,
                                     valCID.toInt(),
                                     valC,
-                                    valAID.toInt(),
-                                    valA,
                                     valDID.toInt(),
                                     valD
                                 )
@@ -4365,9 +4364,9 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
 
                     for (item: PecuMarksModel in PecuModelArrayList) {
                         put(JSONObject().apply {
+                            put("rl", item.pecu_nameOne)
                             put("hl", item.pecu_nameTwo)
-                            put("rl", item.pecu_nameThree)
-                            put("lf", item.pecu_nameOne)
+                            put("lf", item.pecu_nameThree)
                             put("em", item.pecu_nameFour)
                         })
                     }

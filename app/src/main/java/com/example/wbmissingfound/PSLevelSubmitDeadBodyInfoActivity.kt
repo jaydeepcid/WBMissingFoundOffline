@@ -228,14 +228,14 @@ class PSLevelSubmitDeadBodyInfoActivity : BaseActivity() , AdapterView.OnItemSel
                         1080, 1080
                     )
                     .start(IMAGE_REQUEST_IDENTICAL_MARKS)*/
-                selectPicDialog()
-              /*  bannerText = "Please Capture Photo of Place Of Occurrence"
+                //selectPicDialog()
+                bannerText = "Please Capture Photo of Place Of Occurrence"
                 val type = "IDENTIMARKS"
 
                 openPostActivity.launch(
                     CameraXActivity.getIntent(this, 1, type, bannerText)
                  //CameraProcessActivity.getIntent(this, 1, type, bannerText)
-                )*/
+                )
 
 
             }

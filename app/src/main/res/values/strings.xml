@@ -170,8 +170,8 @@
 
     <string-array name="pecu_one">
         <item>Select</item>
-        <item>Limb</item>
-        <item>Finger</item>
+        <item>Right</item>
+        <item>Left</item>
     </string-array>
 
     <string-array name="pecu_two">
@@ -182,8 +182,8 @@
 
     <string-array name="pecu_three">
         <item>Select</item>
-        <item>Right</item>
-        <item>Left</item>
+        <item>Limb</item>
+        <item>Finger</item>
     </string-array>
 
     <string-array name="pecu_four">

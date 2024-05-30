@@ -36,6 +36,8 @@ class MorgLevelListing : BaseActivity() {
 
     private  lateinit var binding:ActivityMorgLevelListingAndSubmitBinding
     var infoArrayList: ArrayList<GetCaseSubByPsModelClass.Information> = ArrayList<GetCaseSubByPsModelClass.Information>()
+    var infoArrayListGRP: ArrayList<GetCaseSubByPsModelClass.Information> = ArrayList<GetCaseSubByPsModelClass.Information>()
+    var infoArrayListPS: ArrayList<GetCaseSubByPsModelClass.Information> = ArrayList<GetCaseSubByPsModelClass.Information>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -112,8 +114,25 @@ class MorgLevelListing : BaseActivity() {
                                   //  Log.e("LogIn_Status", response.body()!!.error_code.toString())
 
                                     if(response.body()!!.status.equals("success")){
-                                        infoArrayList =
-                                            response.body()!!.data as ArrayList<GetCaseSubByPsModelClass.Information>
+                                        infoArrayList = response.body()!!.data as ArrayList<GetCaseSubByPsModelClass.Information>
+
+                                      /*  for (x in infoArrayList) {
+                                            if(x.ps_name.contains("G.R.P")){
+                                                infoArrayListGRP.add(x)
+                                                Log.e("list", infoArrayListGRP.size.toString())
+                                                val adapter = MorgListRecycleViewCustomAdapter(this@MorgLevelListing,infoArrayList)
+                                                if(infoArrayListGRP.size>0){
+                                                    binding.recyclerviewList.adapter=adapter
+                                                    binding.linearLyNoResultList.visibility=View.GONE
+                                                }else{
+                                                    binding.linearLyNoResultList.visibility= View.VISIBLE
+                                                    binding.recyclerviewList.visibility=View.GONE
+                                                }
+                                            }else{
+
+                                            }
+                                        }
+*/
                                         Log.e("list", infoArrayList.size.toString())
                                         val adapter = MorgListRecycleViewCustomAdapter(this@MorgLevelListing,infoArrayList)
                                         if(infoArrayList.size>0){

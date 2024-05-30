@@ -53,6 +53,7 @@ class LoginActivity : BaseActivity() {
         binding.login.setOnClickListener {
             // loadMainActivity()
             if(checkForInternet(this@LoginActivity)){
+               // progressDialogCall(this@LoginActivity)
                 checkLogIn()
             }else{
                 Toast.makeText(
@@ -112,8 +113,9 @@ class LoginActivity : BaseActivity() {
                     } else {
                         try {
                             if (response.isSuccessful) {
+                                closeProgressDialogCall()
                                 Log.e("LogIn_Status", response.body()!!.message.toString())
-                                Log.e("LogIn_Token", response.body()!!.token.toString())
+
                                 if (response.body()!!.message.toString()
                                         .equals("Successfully Login")
                                 ) {
@@ -138,6 +140,8 @@ class LoginActivity : BaseActivity() {
                                     finish()
 
                                 } else {
+                                    //showToastMessage(response.body()!!.message)
+                                   // closeProgressDialogCall()
                                     showAlertDialogMessage(
                                         this@LoginActivity,
                                         response.body()!!.message.toString()
@@ -145,7 +149,7 @@ class LoginActivity : BaseActivity() {
                                 }
 
                             }
-                            closeProgressDialogCall()
+                           // closeProgressDialogCall()
                         } catch (exception: java.lang.Exception) {
                             closeProgressDialogCall()
                             Toast.makeText(

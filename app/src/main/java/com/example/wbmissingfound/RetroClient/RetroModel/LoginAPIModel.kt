@@ -14,7 +14,7 @@ val token: String,
 @SerializedName("message")
     val message: String,
     @SerializedName("username")
- val username:String,
+    val username:String,
     @SerializedName("ds_id")
     val ds_id:Any,
     @SerializedName("ps_id")
