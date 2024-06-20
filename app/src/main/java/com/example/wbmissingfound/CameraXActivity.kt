@@ -231,7 +231,7 @@ class CameraXActivity : AppCompatActivity() {
 
         fun getIntent(context: Context, postId: Int, type: String, bannertext: String): Intent {
             param = type
-            bannerText=bannertext
+            bannerText = bannertext
 
             return Intent(context, CameraXActivity::class.java).apply {
                 putExtra(ID, postId)

@@ -54,7 +54,7 @@ class MorgLevelListing : BaseActivity() {
 
         binding.recyclerviewList.layoutManager = LinearLayoutManager(this)
 
-     Log.e("Test","test")
+        Log.e("Test","test")
         if (checkForInternet(this@MorgLevelListing)) {
             getCaseSubByPs()
         }
@@ -82,20 +82,13 @@ class MorgLevelListing : BaseActivity() {
 //             MorgeListDemoModelClass("AGGSH2536", 4)
 //         )
 
-
         val data = ArrayList<MorgeListDemoModelClass>()
        // val adapter = MorgListRecycleViewCustomAdapter(this,questions)
-
-
-
-
-
 
     }
 
 
     private fun getCaseSubByPs() {
-
         var mAPIService: APIService? = null
         progressDialogCall(this@MorgLevelListing)
         mAPIService = ApiUtils.apiService
@@ -108,41 +101,70 @@ class MorgLevelListing : BaseActivity() {
                             call: Call<GetCaseSubByPsModelClass>,
                             response: Response<GetCaseSubByPsModelClass>
                         ) {
-                            try {
-                                if (response.isSuccessful) {
+                            if (response.code() == 200) {
+                                try {
+                                    //  closeProgressDialogCall()
+                                    if (response.isSuccessful) {
+                                        closeProgressDialogCall()
 
-                                  //  Log.e("LogIn_Status", response.body()!!.error_code.toString())
+                                        //  Log.e("LogIn_Status", response.body()!!.error_code.toString())
 
-                                    if(response.body()!!.status.equals("success")){
-                                        infoArrayList = response.body()!!.data as ArrayList<GetCaseSubByPsModelClass.Information>
+                                        if (response.body()!!.status.equals("success")) {
+                                            infoArrayList =
+                                                response.body()!!.data as ArrayList<GetCaseSubByPsModelClass.Information>
 
-                                      /*  for (x in infoArrayList) {
-                                            if(x.ps_name.contains("G.R.P")){
-                                                infoArrayListGRP.add(x)
-                                                Log.e("list", infoArrayListGRP.size.toString())
-                                                val adapter = MorgListRecycleViewCustomAdapter(this@MorgLevelListing,infoArrayList)
-                                                if(infoArrayListGRP.size>0){
-                                                    binding.recyclerviewList.adapter=adapter
-                                                    binding.linearLyNoResultList.visibility=View.GONE
+                                             Log.e("list", infoArrayList.size.toString())
+                                             val adapter = MorgListRecycleViewCustomAdapter(
+                                                this@MorgLevelListing,
+                                                infoArrayList
+                                            )
+                                            if (infoArrayList.size > 0) {
+                                                binding.recyclerviewList.adapter = adapter
+                                                binding.linearLyNoResultList.visibility = View.GONE
+                                            } else {
+                                                binding.linearLyNoResultList.visibility =
+                                                    View.VISIBLE
+                                                binding.recyclerviewList.visibility = View.GONE
+                                            }
+                                           /* for (x in infoArrayList) {
+
+                                                if(x.ps_name.contains("g.r.p.s")){
+                                                    infoArrayListGRP.add(x)
+                                                    Log.e("list", infoArrayListGRP.size.toString())
                                                 }else{
-                                                    binding.linearLyNoResultList.visibility= View.VISIBLE
-                                                    binding.recyclerviewList.visibility=View.GONE
+                                                    infoArrayListPS.add(x)
+                                                }
+                                            }
+                                            var psName=SharedPreferenceStorage.getValue(applicationContext,"PS","")
+                                            val pattern = Regex("g.r.p.s")
+                                            if(pattern.containsMatchIn(psName.toString())){
+                                                val adapter = MorgListRecycleViewCustomAdapter(
+                                                    this@MorgLevelListing,
+                                                    infoArrayListGRP
+                                                )
+                                                if (infoArrayListGRP.size > 0) {
+                                                    binding.recyclerviewList.adapter = adapter
+                                                    binding.linearLyNoResultList.visibility = View.GONE
+                                                } else {
+                                                    binding.linearLyNoResultList.visibility =
+                                                        View.VISIBLE
+                                                    binding.recyclerviewList.visibility = View.GONE
                                                 }
                                             }else{
-
-                                            }
+                                                val adapter = MorgListRecycleViewCustomAdapter(
+                                                    this@MorgLevelListing,
+                                                    infoArrayListPS
+                                                )
+                                                if (infoArrayListPS.size > 0) {
+                                                    binding.recyclerviewList.adapter = adapter
+                                                    binding.linearLyNoResultList.visibility = View.GONE
+                                                } else {
+                                                    binding.linearLyNoResultList.visibility =
+                                                        View.VISIBLE
+                                                    binding.recyclerviewList.visibility = View.GONE
+                                                }
+                                            }*/
                                         }
-*/
-                                        Log.e("list", infoArrayList.size.toString())
-                                        val adapter = MorgListRecycleViewCustomAdapter(this@MorgLevelListing,infoArrayList)
-                                        if(infoArrayList.size>0){
-                                            binding.recyclerviewList.adapter=adapter
-                                            binding.linearLyNoResultList.visibility=View.GONE
-                                        }else{
-                                            binding.linearLyNoResultList.visibility= View.VISIBLE
-                                            binding.recyclerviewList.visibility=View.GONE
-                                        }
-                                    }
 //                                    if (response.body()!!.status.toString().equals("success")) {
 //                                        val preferences =
 //                                            getSharedPreferences("DATA", Context.MODE_PRIVATE)
@@ -169,16 +191,26 @@ class MorgLevelListing : BaseActivity() {
 //                                            Toast.LENGTH_LONG
 //                                        ).show()
 //                                    }
+                                        closeProgressDialogCall()
+
+                                    }
+                                } catch (exception: java.lang.Exception) {
                                     closeProgressDialogCall()
+                                    Toast.makeText(
+                                        this@MorgLevelListing,
+                                        "Some issue in server end",
+                                        Toast.LENGTH_LONG
+                                    ).show()
 
                                 }
-                            } catch (exception: java.lang.Exception) {
+                            }else{
                                 closeProgressDialogCall()
                                 Toast.makeText(
                                     this@MorgLevelListing,
                                     "Some issue in server end",
                                     Toast.LENGTH_LONG
                                 ).show()
+
 
                             }
                         }

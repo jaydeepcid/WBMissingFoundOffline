@@ -19,7 +19,9 @@ object SharedPreferenceStorage {
     const val JWT_TOKEN = "jwt_token"
     const val USERID = "userid"
     const val USERTYPE = "usertype"
-
+    const val USERNAME = "username"
+    const val PS_NAME = "ps_name"
+    const val MORGUE_NAME = "morgue_name"
     /**
      * GetSharedPreferences
      *

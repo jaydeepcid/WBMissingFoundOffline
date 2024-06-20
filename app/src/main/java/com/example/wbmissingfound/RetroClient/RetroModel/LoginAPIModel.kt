@@ -3,21 +3,25 @@ package com.example.wbmissingfound.RetroClient.RetroModel
 import com.google.gson.annotations.SerializedName
 
 data class LoginAPIModel(
-@SerializedName("success")
-val success:Boolean,
-@SerializedName("userId")
+    @SerializedName("success")
+    val success:Boolean,
+    @SerializedName("userId")
     val userId: String,
-@SerializedName("userType")
-val userType: String,
-@SerializedName("token")
-val token: String,
-@SerializedName("message")
+    @SerializedName("userType")
+    val userType: String,
+    @SerializedName("token")
+    val token: String,
+    @SerializedName("message")
     val message: String,
     @SerializedName("username")
     val username:String,
     @SerializedName("ds_id")
     val ds_id:Any,
     @SerializedName("ps_id")
-    val ps_id:Any
+    val ps_id:Any,
+    @SerializedName("ps_name")
+    val ps_name: String,
+    @SerializedName("morgue_name")
+    val morgue_name: String,
 
 )

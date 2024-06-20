@@ -1182,7 +1182,7 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
                     if (checkValidation())
                         updateMorguecase()
                 }else{
-                    Toast.makeText(this@MorgueLevelSubmitInfoActivity,"Please add body image",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@MorgueLevelSubmitInfoActivity,"Please upload body image",Toast.LENGTH_LONG).show()
                 }
 
             }
@@ -1699,7 +1699,6 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
                             result = JSONObject(s)
                             Log.e("Morgue Submit", result.toString())
                             if (result!!.optString("success").equals("true")) {
-
                                 clearallField()
                                 faceImage.clear()
                                 bodyImage.clear()
@@ -1722,7 +1721,7 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
                                     builder.apply {
                                         setPositiveButton("OK",
                                             {dialog, id ->
-                                                loadMorgeListPageActivity()
+                                              loadMorgeListPageActivity()
                                         })
 
                                     }
@@ -1898,11 +1897,12 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
     }
 
     private fun loadMorgeListPageActivity() {
-
+        this.finish()
         //  intent = Intent(baseContext, MainActivity::class.java)
         // intent = Intent(baseContext, SubmitDeadBodyInformationActivity::class.java)
         intent = Intent(baseContext, MorgLevelListing::class.java)
         startActivity(intent)
+
     }
 
     private fun clearallField() {
@@ -5223,169 +5223,179 @@ class MorgueLevelSubmitInfoActivity :  AppCompatActivity(), AdapterView.OnItemSe
     private val openPostActivity =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
-                imagePath = result.data?.getStringExtra("path").toString()
-                val file: File = FileUtils.getFile(this, Uri.parse(imagePath))
-                val imageFlag = ImageCheck(file)
-                if (imageFlag == 2) {
+                try{
+                    imagePath = result.data?.getStringExtra("path").toString()
+                    val file: File = FileUtils.getFile(this, Uri.parse(imagePath))
+                    val imageFlag = ImageCheck(file)
+                    if (imageFlag == 2) {
 //                    Toast.makeText(
 //                        this@MorgueLevelSubmitInfoActivity,
 //                        "Please Capture Clear Image ",
 //                        Toast.LENGTH_LONG
 //                    ).show()
-                    showAlertDialogMessage(this@MorgueLevelSubmitInfoActivity,
-                        "Please Capture Clear Image ")
+                        showAlertDialogMessage(this@MorgueLevelSubmitInfoActivity,
+                            "Please Capture Clear Image ")
 
-                }
-                if (imageFlag == 3) {
+                    }
+                    if (imageFlag == 3) {
 //                    Toast.makeText(
 //                        this@MorgueLevelSubmitInfoActivity,
 //                        "Please Capture Bright Image ",
 //                        Toast.LENGTH_LONG
 //                    ).show()show
-                    showAlertDialogMessage(this@MorgueLevelSubmitInfoActivity,
-                        "Please Capture Bright Image ")
+                        showAlertDialogMessage(this@MorgueLevelSubmitInfoActivity,
+                            "Please Capture Bright Image ")
 
 
-                }
-                if (imageFlag == 1) {
-                    imageCategory = result.data?.getStringExtra("type").toString()
-                    // _imageUri = Uri.parse(result.data?.getStringExtra("imageUri"));
-
-
-                    val uri: String? = result.data?.getStringExtra("path")
-                    if (uri != null) {
-                        imagePath = uri
                     }
-                    val inflater =
-                        LayoutInflater.from(this).inflate(R.layout.custom_imageview_layout, null)
-                    val img_main = inflater.findViewById<ImageView>(R.id.img_photo)
-                    val img_close = inflater.findViewById<ImageButton>(R.id.btn_close)
-                    img_main.setImageURI(Uri.parse(uri))
+                    if (imageFlag == 1) {
+                        imageCategory = result.data?.getStringExtra("type").toString()
+                        // _imageUri = Uri.parse(result.data?.getStringExtra("imageUri"));
 
-                    Log.e("SANKHA", imagePath.toString())
-                    Log.e("SANKHA", imageCategory.toString())
-                    Log.e("SANKHA", faceImage.size.toString())
-                    if (imageCategory.equals("WEARINGAPP")) {
-                        binding.btnPicClothUpload.visibility = View.VISIBLE
-                        wApparelsImage.add(imagePath)
-                        binding.llPicWa.addView(inflater)
-                        img_close.setOnClickListener {
-                            wApparelsImage.remove(imagePath)
 
-                            binding.llPicWa.removeView(inflater)
-                            // (binding.llPicWa.parent as ViewGroup).removeView(binding.llPicWa)
+                        val uri: String? = result.data?.getStringExtra("path")
+                        if (uri != null) {
+                            imagePath = uri
                         }
-                    } else if (imageCategory.equals("FOOTWARE")) {
+                        val inflater =
+                            LayoutInflater.from(this).inflate(R.layout.custom_imageview_layout, null)
+                        val img_main = inflater.findViewById<ImageView>(R.id.img_photo)
+                        val img_close = inflater.findViewById<ImageButton>(R.id.btn_close)
+                        img_main.setImageURI(Uri.parse(uri))
 
-                        footwareApparelsImage.add(imagePath)
-                        binding.btnPicFootwearUpload.visibility = View.VISIBLE
-                        binding.llFootwarePic.addView(inflater)
-                        img_close.setOnClickListener {
-                            footwareApparelsImage.remove(imagePath)
+                        Log.e("SANKHA", imagePath.toString())
+                        Log.e("SANKHA", imageCategory.toString())
+                        Log.e("SANKHA", faceImage.size.toString())
+                        if (imageCategory.equals("WEARINGAPP")) {
+                            binding.btnPicClothUpload.visibility = View.VISIBLE
+                            wApparelsImage.add(imagePath)
+                            binding.llPicWa.addView(inflater)
+                            img_close.setOnClickListener {
+                                wApparelsImage.remove(imagePath)
 
-                            binding.llFootwarePic.removeView(inflater)
-                            //(binding.llFootwarePic.parent as ViewGroup).removeView(binding.llFootwarePic)
-                        }
-                    } else if (imageCategory.equals("OTHERS")) {
-                        othersImage.add(imagePath)
-                        binding.btnPicOthersUpload.visibility = View.VISIBLE
-                        binding.llPicOthers.addView(inflater)
-                        img_close.setOnClickListener {
-                            othersImage.remove(imagePath)
+                                binding.llPicWa.removeView(inflater)
+                                // (binding.llPicWa.parent as ViewGroup).removeView(binding.llPicWa)
+                            }
+                        } else if (imageCategory.equals("FOOTWARE")) {
 
-                            binding.llPicOthers.removeView(inflater)
-                            //(binding.llPicOthers.parent as ViewGroup).removeView(binding.llPicOthers)
-                        }
-                    } else if (imageCategory.equals("FACE")) {
+                            footwareApparelsImage.add(imagePath)
+                            binding.btnPicFootwearUpload.visibility = View.VISIBLE
+                            binding.llFootwarePic.addView(inflater)
+                            img_close.setOnClickListener {
+                                footwareApparelsImage.remove(imagePath)
 
-                        val options = FaceDetectorOptions.Builder()
-                            .setPerformanceMode(FaceDetectorOptions.PERFORMANCE_MODE_ACCURATE)
-                            .setLandmarkMode(FaceDetectorOptions.LANDMARK_MODE_ALL)
-                            .setClassificationMode(FaceDetectorOptions.CLASSIFICATION_MODE_ALL)
-                            .setMinFaceSize(0.15f)
-                            .enableTracking()
-                            .build()
-                        val detector = FaceDetection.getClient(options)
-                        val image: InputImage
-                        try {
-                            image = InputImage.fromFilePath(this, Uri.parse(uri))
-                            val result = detector.process(image)
-                                .addOnSuccessListener { faces ->
-                                    if (faces.isEmpty())
-                                        Toast.makeText(this, "Not a Face image", Toast.LENGTH_SHORT)
-                                            .show()
-                                    else {
-                                        faceImage.add(imagePath)
-                                        binding.llPicFace.addView(inflater)
-                                        img_close.setOnClickListener {
-                                            faceImage.remove(imagePath)
-                                            binding.llPicFace.removeView(inflater)
-                                            // binding.llPicFace.removeAllViews()
-                                            // (binding.llPicFace.getParent() as ViewGroup).removeView(binding.llPicFace)
+                                binding.llFootwarePic.removeView(inflater)
+                                //(binding.llFootwarePic.parent as ViewGroup).removeView(binding.llFootwarePic)
+                            }
+                        } else if (imageCategory.equals("OTHERS")) {
+                            othersImage.add(imagePath)
+                            binding.btnPicOthersUpload.visibility = View.VISIBLE
+                            binding.llPicOthers.addView(inflater)
+                            img_close.setOnClickListener {
+                                othersImage.remove(imagePath)
+
+                                binding.llPicOthers.removeView(inflater)
+                                //(binding.llPicOthers.parent as ViewGroup).removeView(binding.llPicOthers)
+                            }
+                        } else if (imageCategory.equals("FACE")) {
+
+                            val options = FaceDetectorOptions.Builder()
+                                .setPerformanceMode(FaceDetectorOptions.PERFORMANCE_MODE_ACCURATE)
+                                .setLandmarkMode(FaceDetectorOptions.LANDMARK_MODE_ALL)
+                                .setClassificationMode(FaceDetectorOptions.CLASSIFICATION_MODE_ALL)
+                                .setMinFaceSize(0.15f)
+                                .enableTracking()
+                                .build()
+                            val detector = FaceDetection.getClient(options)
+                            val image: InputImage
+                            try {
+                                image = InputImage.fromFilePath(this, Uri.parse(uri))
+                                val result = detector.process(image)
+                                    .addOnSuccessListener { faces ->
+                                        if (faces.isEmpty())
+                                            Toast.makeText(this, "Not a Face image", Toast.LENGTH_SHORT)
+                                                .show()
+                                        else {
+                                            faceImage.add(imagePath)
+                                            binding.llPicFace.addView(inflater)
+                                            img_close.setOnClickListener {
+                                                faceImage.remove(imagePath)
+                                                binding.llPicFace.removeView(inflater)
+                                                // binding.llPicFace.removeAllViews()
+                                                // (binding.llPicFace.getParent() as ViewGroup).removeView(binding.llPicFace)
+                                            }
+
                                         }
-
                                     }
-                                }
-                                .addOnFailureListener { e ->
-                                    // Task failed with an exception
-                                    // ...
-                                }
-                        } catch (e: IOException) {
-                            e.printStackTrace()
-                        }
-                        binding.btnPicFaceUoload.visibility = View.VISIBLE
-                    } else if (imageCategory.equals("BODY")) {
+                                    .addOnFailureListener { e ->
+                                        // Task failed with an exception
+                                        // ...
+                                    }
+                            } catch (e: IOException) {
+                                e.printStackTrace()
+                            }
+                            binding.btnPicFaceUoload.visibility = View.VISIBLE
+                        } else if (imageCategory.equals("BODY")) {
 
 
-                        bodyImage.add(imagePath)
-                        binding.llPicBody.addView(inflater)
-                        img_close.setOnClickListener {
-                            bodyImage.remove(imagePath)
-                            //binding.llPicBody.removeAllViews()
-                            binding.llPicBody.removeView(inflater)
-                            //(binding.llPicBody.parent as ViewGroup).removeView(binding.llPicBody)
-                        }
-                        binding.btnPicBodyUoload.visibility = View.VISIBLE
-                    } else if (imageCategory.equals("PERSONALITEM")) {
-                        pItemImage.add(imagePath)
-                        binding.llPersonalItemsOfTheBody.addView(
-                            inflater,
-                            binding.llPersonalItemsOfTheBody.childCount
-                        )
+                            bodyImage.add(imagePath)
+                            binding.llPicBody.addView(inflater)
+                            img_close.setOnClickListener {
+                                bodyImage.remove(imagePath)
+                                //binding.llPicBody.removeAllViews()
+                                binding.llPicBody.removeView(inflater)
+                                //(binding.llPicBody.parent as ViewGroup).removeView(binding.llPicBody)
+                            }
+                            binding.btnPicBodyUoload.visibility = View.VISIBLE
+                        } else if (imageCategory.equals("PERSONALITEM")) {
+                            pItemImage.add(imagePath)
+                            binding.llPersonalItemsOfTheBody.addView(
+                                inflater,
+                                binding.llPersonalItemsOfTheBody.childCount
+                            )
 
 
-                        img_close.setOnClickListener {
-                            pItemImage.remove(imagePath)
-                            // binding.llPersonalItemsOfTheBody.removeAllViews()
-                            binding.llPersonalItemsOfTheBody.removeView(inflater)
+                            img_close.setOnClickListener {
+                                pItemImage.remove(imagePath)
+                                // binding.llPersonalItemsOfTheBody.removeAllViews()
+                                binding.llPersonalItemsOfTheBody.removeView(inflater)
 //                        (binding.llPersonalItemsOfTheBody.parent as ViewGroup).removeView(
 //                            binding.llPersonalItemsOfTheBody
 //                        )
-                        }
-                    } else if (imageCategory.equals("SPECLMARKS")) {
-                        SpecialMarksImage.add(imagePath)
-                        binding.llSpcIdenMarks.addView(inflater)
-                        img_close.setOnClickListener {
-                            SpecialMarksImage.remove(imagePath)
-                            // binding.llSpcIdenMarks.removeAllViews()
-                            binding.llSpcIdenMarks.removeView(inflater)
-                            //(binding.llSpcIdenMarks.parent as ViewGroup).removeView(binding.llSpcIdenMarks)
-                        }
-                    } else if (imageCategory.equals("IDENTIMARKS")) {
-                        visibleIdMarksImage.add(imagePath)
-                        Log.e("JOYIMAGE", imagePath)
+                            }
+                        } else if (imageCategory.equals("SPECLMARKS")) {
+                            SpecialMarksImage.add(imagePath)
+                            binding.llSpcIdenMarks.addView(inflater)
+                            img_close.setOnClickListener {
+                                SpecialMarksImage.remove(imagePath)
+                                // binding.llSpcIdenMarks.removeAllViews()
+                                binding.llSpcIdenMarks.removeView(inflater)
+                                //(binding.llSpcIdenMarks.parent as ViewGroup).removeView(binding.llSpcIdenMarks)
+                            }
+                        } else if (imageCategory.equals("IDENTIMARKS")) {
+                            visibleIdMarksImage.add(imagePath)
+                            Log.e("JOYIMAGE", imagePath)
 
 
-                        binding.llIdenticalMarksPic.addView(inflater)
-                        img_close.setOnClickListener {
-                            visibleIdMarksImage.remove(imagePath)
-                            //binding.llIdenticalMarksPic.removeAllViews()
-                            binding.llIdenticalMarksPic.removeView(inflater)
-                            //(binding.llIdenticalMarksPic.parent as ViewGroup).removeView(binding.llIdenticalMarksPic)
+                            binding.llIdenticalMarksPic.addView(inflater)
+                            img_close.setOnClickListener {
+                                visibleIdMarksImage.remove(imagePath)
+                                //binding.llIdenticalMarksPic.removeAllViews()
+                                binding.llIdenticalMarksPic.removeView(inflater)
+                                //(binding.llIdenticalMarksPic.parent as ViewGroup).removeView(binding.llIdenticalMarksPic)
+                            }
                         }
+                        Log.e("SANKHA", faceImage.size.toString())
                     }
-                    Log.e("SANKHA", faceImage.size.toString())
+                }catch (exception: java.lang.Exception){
+                    Toast.makeText(
+                        this@MorgueLevelSubmitInfoActivity,
+                        "Some issue in Camera ",
+                        Toast.LENGTH_LONG
+                    ).show()
+
                 }
+
             }
         }
 

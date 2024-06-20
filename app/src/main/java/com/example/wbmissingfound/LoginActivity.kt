@@ -135,6 +135,47 @@ class LoginActivity : BaseActivity() {
                                         SharedPreferenceStorage.USERTYPE,
                                         response.body()!!.userType
                                     )
+                                       SharedPreferenceStorage.setValue(
+                                        activity,
+                                        SharedPreferenceStorage.USERNAME,
+                                        response.body()!!.username
+                                    )
+                                    if( response.body()!!.userType.equals(Constants.USER_TYPE.POLICESTATION)){
+                                        SharedPreferenceStorage.setValue(
+                                            activity,
+                                            SharedPreferenceStorage.PS_NAME,
+                                            response.body()!!.ps_name)
+                                    } else if(response.body()!!.userType.equals(Constants.USER_TYPE.POLICESTATIONGRPS)){
+                                        SharedPreferenceStorage.setValue(
+                                            activity,
+                                            SharedPreferenceStorage.PS_NAME,
+                                            response.body()!!.ps_name)
+                                    }else if(response.body()!!.userType.equals(Constants.USER_TYPE.KP)){
+                                        SharedPreferenceStorage.setValue(
+                                            activity,
+                                            SharedPreferenceStorage.PS_NAME,
+                                            response.body()!!.ps_name)
+                                    }
+                                    else if(response.body()!!.userType.equals(Constants.USER_TYPE.MORGUE)){
+                                        SharedPreferenceStorage.setValue(
+                                            activity,
+                                            SharedPreferenceStorage.MORGUE_NAME,
+                                            response.body()!!.morgue_name)
+
+                                    }else if(response.body()!!.userType.equals(Constants.USER_TYPE.MORGUEGRPS)){
+                                        SharedPreferenceStorage.setValue(
+                                            activity,
+                                            SharedPreferenceStorage.MORGUE_NAME,
+                                            response.body()!!.morgue_name)
+
+                                    }else if(response.body()!!.userType.equals(Constants.USER_TYPE.MORGUEKP)){
+                                        SharedPreferenceStorage.setValue(
+                                            activity,
+                                            SharedPreferenceStorage.MORGUE_NAME,
+                                            response.body()!!.morgue_name)
+
+                                    }
+
                                     val accountsIntent = Intent(activity, MainActivity::class.java)
                                     startActivity(accountsIntent)
                                     finish()

@@ -798,13 +798,28 @@ class PSLevelSubmitDeadBodyInfoActivity : BaseActivity() , AdapterView.OnItemSel
                                     //binding.btnIdenticalMarks.visibility=View.VISIBLE
                                     binding.llIdenticalMarksPic.removeAllViews()
                                     clearAllField()
-                                    showAlertDialogMessageSuccess(
+                                   /* showAlertDialogMessageSuccess(
                                         this@PSLevelSubmitDeadBodyInfoActivity,
                                         response.body()!!.message.toString()
-                                    )
-                                    // Clear The form
+                                    )*/
+                                        var alertDialog: androidx.appcompat.app.AlertDialog? = this@PSLevelSubmitDeadBodyInfoActivity.let {
+                                        val appName = getString(R.string.app_name)
+                                        var builder = androidx.appcompat.app.AlertDialog.Builder(it)
+                                        builder.setTitle(appName)
+                                        builder.setCancelable(false)
+                                        builder.setIcon(R.drawable.ok_sign)
+                                        builder.setMessage( response.body()!!.message.toString())
+                                        builder.apply {
+                                            setPositiveButton("OK",
+                                                {dialog, id ->
+                                                   finish()
+                                                })
 
-                                    //Clear the form
+                                        }
+                                        builder.create()
+                                        }
+                                        alertDialog?.show()
+
                                 } else {
                                     showAlertDialogMessage(
                                         this@PSLevelSubmitDeadBodyInfoActivity,

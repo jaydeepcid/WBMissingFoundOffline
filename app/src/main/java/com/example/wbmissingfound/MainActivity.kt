@@ -78,6 +78,8 @@ class MainActivity : BaseActivity() {
 
     var isAllFabsVisible = false
 
+    var policeStationName =""
+
     private lateinit var checkNetworkConnection: CheckNetworkConnection
 
     var CaseDataHashMap = ArrayList<HashMap<String, String>>()
@@ -113,10 +115,30 @@ class MainActivity : BaseActivity() {
         setContentView(binding.root)*/
         binding = DataBindingUtil.setContentView(activity, R.layout.activity_main_new)
         //getLatestApk()
-        if(SharedPreferenceStorage.getValue(baseContext,SharedPreferenceStorage.USERTYPE,"").equals(Constants.USER_TYPE.MORGUE)){
-            binding.mcvUnidentifiedPerson.visibility = View.VISIBLE
-        }else if(SharedPreferenceStorage.getValue(baseContext,SharedPreferenceStorage.USERTYPE,"").equals(Constants.USER_TYPE.POLICESTATION)){
+        if(SharedPreferenceStorage.getValue(baseContext,SharedPreferenceStorage.USERTYPE,"").equals(Constants.USER_TYPE.POLICESTATION)){
             binding.mcvPoliceData.visibility = View.VISIBLE
+            binding.tvWelcomeMsg!!.visibility = View.VISIBLE
+            binding.tvWelcomeMsg!!.setText("Welcome to "+SharedPreferenceStorage.getValue(baseContext,SharedPreferenceStorage.PS_NAME,""))
+            val cursor = db1.getPSData()
+            val rowQty=cursor!!.count
+            if(rowQty>0){
+                binding.mcvOfflineForSyn!!.visibility= View.VISIBLE
+                binding.tvUnSynDatacount!!.setText(rowQty.toString()+" Unsynchronized data")
+            }
+        }else if(SharedPreferenceStorage.getValue(baseContext,SharedPreferenceStorage.USERTYPE,"").equals(Constants.USER_TYPE.POLICESTATIONGRPS)){
+            binding.mcvPoliceData.visibility = View.VISIBLE
+            binding.tvWelcomeMsg!!.visibility = View.VISIBLE
+            binding.tvWelcomeMsg!!.setText("Welcome to "+SharedPreferenceStorage.getValue(baseContext,SharedPreferenceStorage.PS_NAME,""))
+            val cursor = db1.getPSData()
+            val rowQty=cursor!!.count
+            if(rowQty>0){
+                binding.mcvOfflineForSyn!!.visibility= View.VISIBLE
+                binding.tvUnSynDatacount!!.setText(rowQty.toString()+" Unsynchronized data")
+            }
+        }else if(SharedPreferenceStorage.getValue(baseContext,SharedPreferenceStorage.USERTYPE,"").equals(Constants.USER_TYPE.KP)){
+            binding.mcvPoliceData.visibility = View.VISIBLE
+            binding.tvWelcomeMsg!!.visibility = View.VISIBLE
+            binding.tvWelcomeMsg!!.setText("Welcome to "+SharedPreferenceStorage.getValue(baseContext,SharedPreferenceStorage.PS_NAME,""))
             val cursor = db1.getPSData()
             val rowQty=cursor!!.count
             if(rowQty>0){
@@ -124,6 +146,26 @@ class MainActivity : BaseActivity() {
                 binding.tvUnSynDatacount!!.setText(rowQty.toString()+" Unsynchronized data")
             }
         }
+        else if(SharedPreferenceStorage.getValue(baseContext,SharedPreferenceStorage.USERTYPE,"").equals(Constants.USER_TYPE.MORGUE)){
+            binding.mcvUnidentifiedPerson.visibility = View.VISIBLE
+            binding.tvWelcomeMsg!!.visibility = View.VISIBLE
+            binding.tvWelcomeMsg!!.setText("Welcome to "+SharedPreferenceStorage.getValue(baseContext,SharedPreferenceStorage.MORGUE_NAME,""))
+
+        }else if(SharedPreferenceStorage.getValue(baseContext,SharedPreferenceStorage.USERTYPE,"").equals(Constants.USER_TYPE.MORGUEGRPS)){
+            binding.mcvUnidentifiedPerson.visibility = View.VISIBLE
+            binding.tvWelcomeMsg!!.visibility = View.VISIBLE
+            binding.tvWelcomeMsg!!.setText("Welcome to "+SharedPreferenceStorage.getValue(baseContext,SharedPreferenceStorage.MORGUE_NAME,""))
+
+        }else if(SharedPreferenceStorage.getValue(baseContext,SharedPreferenceStorage.USERTYPE,"").equals(Constants.USER_TYPE.MORGUEKP)){
+            binding.mcvUnidentifiedPerson.visibility = View.VISIBLE
+            binding.tvWelcomeMsg!!.visibility = View.VISIBLE
+            binding.tvWelcomeMsg!!.setText("Welcome to "+SharedPreferenceStorage.getValue(baseContext,SharedPreferenceStorage.MORGUE_NAME,""))
+
+        }
+        else{
+            binding.tvWelcomeMsg!!.visibility = View.GONE
+        }
+
 
         if(OpenCVLoader.initDebug())
             Log.d("openCv","openCv configure Success")
@@ -209,11 +251,13 @@ class MainActivity : BaseActivity() {
         binding.tvVersion.text = "Version:" + version + "\n © Developed by CID West Bengal"
 
         if (checkForInternet(this)) {
-            logInValidityCheck()
-            if(!db1.CheckIsDataAlreadyInDBorNotMorgueList()){
-                getMorgueListForPS()
-            }
+            //logInValidityCheck()
             GetPsByUserIDForUser()
+            getMorgueListForPS()
+          /*  if(!db1.CheckIsDataAlreadyInDBorNotMorgueList()){
+                getMorgueListForPS()
+            }*/
+
         }
      //   setOfflineDataUserWise()
         binding.mcvOfflineForSyn.setOnClickListener{
@@ -311,8 +355,9 @@ class MainActivity : BaseActivity() {
                                     // Log.e("LogIn_Token", response.body()!!.status.toString())
                                     if (response.body()!!.status.equals("success")) {
                                         policeStationArrayList = response.body()!!.data
-                                        val policeStationName= policeStationArrayList.get(0).ps_name
+                                        policeStationName= policeStationArrayList.get(0).ps_name
                                         val psid = policeStationArrayList.get(0).ps_id
+                                        //binding.tvWelcomeMsg!!.setText("Welcome to "+ policeStationName)
                                         SharedPreferenceStorage.setValue(
                                             activity,
                                             "PSName",
